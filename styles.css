@@ -2,9 +2,16 @@
     margin: 0;
     padding: 0;
 }
-
+:root{
+    --window_bg_color--: black;
+    --sidebars_bg_color--: #1E1E1E;
+    --stepha_font_color--: white;
+    --primary_text_color--: white;
+    --title_text_color--: white;
+    --block_bg_color--:#1E1E1E;
+}
 html, body {
-    background-color: #172B49;
+    background-color: var(--window_bg_color--);
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -15,14 +22,41 @@ html, body {
     padding-left: 50px;
     font-size: 20px;
     font-family:  'Segoe UI', Tahoma, Verdana, Arial;
-    background-color: #152236;
-    color: #7191BF;
+    background-color: var(--sidebars_bg_color--);
+    color: var(--title_text_color--);
 }
 #sidebar{
-    width: 13%;
+    width: 160px; /* 13% */
     height: 100%;
     line-height: 100%;
+    border-radius: 0 0 80px 0;
     font-family:  'Segoe UI', Tahoma, Verdana, Arial;
-    background-color: #152236;
+    background-color: var(--sidebars_bg_color--);
     color: #7191BF;
+    
+}
+.main_buttons{
+    display: flex;
+    width: 154px;
+    height: 134px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#things_to_do_button{
+    border: 3px solid #7E2689;
+    background-color: #30034B;
+    color: #BC1AE6;
+}
+#daily_reminders_button{
+    border: 3px solid #FC9404;
+    background-color: #8D5C3E;
+    color: #FC9404;
+}
+#tools_button{
+    border: 3px solid #07B1A3;
+    background-color: #07b1a38c;
+    color: #07B1A3;
 }
