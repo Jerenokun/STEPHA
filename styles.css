@@ -41,6 +41,7 @@ html, body {
 }
 .main_buttons{
     display: flex;
+    position: fixed;
     flex-direction: column;
     width: 134px;
     height: 114px;
@@ -49,9 +50,10 @@ html, body {
     justify-content: center;
     vertical-align: middle;
     font-size: 18px;
-    font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
 }
+
 .main_buttons_icons{
     height: 70px;
     width: 70px;
@@ -63,11 +65,14 @@ html, body {
     color: #BC1AE6;
 }
 #daily_reminders_button{
+    top: 200px;
     border: 3px solid #FC9404;
     background-color: #8D5C3E;
     color: #FC9404;
 }
 #tools_button{
+    top: 340px;
+
     border-radius: 0 0 10px 10px;
     border: 3px solid #07B1A3;
     background-color: #07b1a38c;
