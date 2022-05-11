@@ -1,10 +1,8 @@
-/* check Line 69 for the content areas  */
-/* I SWEAR THIS ISN'T ON PURPOSE */
-
 * {
     margin: 0;
     padding: 0;
 }
+/* these are variables */
 :root{
     --window_bg_color--: black;
     --sidebars_bg_color--: #1E1E1E;
