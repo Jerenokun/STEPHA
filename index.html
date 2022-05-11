@@ -5,16 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>STEPHA</title>
-        <link href="styles.css" rel="stylesheet" />
+        <link href="styles/styles.css" rel="stylesheet" />
+        <link href="styles/main_styles.css" rel="stylesheet">
+        <link href="styles/main_buttons_styles.css" rel="stylesheet">
+        <link href="styles/homepage.css" rel="stylesheet">
+        <script src="index.js"></script>
     </head>
     <body>
         <div id="navbar">
-            <img src="assets/menu_button.svg" id="menu_button" />
+            <img src="assets/menu_button.svg" id="menu_button" onclick="home()"/>
             Learn, Focus, Relax!
         </div>
             <!-- sidebar -->
             <div id="sidebar">
-                <div id="things_to_do_button" class="main_buttons">
+                <div id="things_to_do_button" class="main_buttons" onclick="todolist_page()">
                     <img src="assets/todolist_icon.svg" class="main_buttons_icons"/><br />
                     To do list
                 </div>
@@ -29,19 +33,51 @@
             </div>
             <!-- Main_content, basically where most of the stuff is placed -->
             <div id="main_content">
-                <!-- There's two kasi-->
-                <div id="main_content_col1">
-                    <span style="font-size: 35px;font-weight: 700">STEPHA </span>
-                    <img src="assets/stepha_icon.svg">
-                    <span id="greeting">Good Morning Andy</span>
-                    <div class="content_area">
-                        This is for le blockies
+                <!-- This is the home page -->
+                <div id="homepage">
+                    <div id="homepage_col1">
+                        <span style="font-size: 35px;font-weight: 700">STEPHA </span>
+                        <img src="assets/stepha_icon.svg">
+                        <span id="greeting">Good Morning Andy</span>
+                        <div class="homepage_content_area">
+                            This is for le blockies
+                        </div>
+                    </div>
+                    <div id="homepage_col2">
+                        <div class="homepage_content_area">
+                            This is for le other blockies or in technical terms content_area
+                        </div>
                     </div>
                 </div>
-                <div id="main_content_col2">
-                    This is for le other blockies or in technical terms content_area
+                <!-- This is the todolist page -->
+                <div id="todolist_page">
+                    <div id="todolist_table">
+                        <div id="todolist_title">
+                            To Do List
+                        </div>
+                        <div id="todolist_items">
+                            <p>MATH -  Performance Task 1 | Pre-Calculus Tutor!</p>
+                            <p>ENGLISH - Google Slides on Modifiers</p>
+                            <p>HISTORY - Study about WW2</p>
+                            <p>ICT - Study Java lesson about Inputs and Outputs</p>
+                            <p>ICT - Study Java lesson about Inputs and Outputs</p>   
+                            <p>ICT - Study Java lesson about Inputs and Outputs</p>   
+                            <p>ICT - Study Java lesson about Inputs and Outputs</p>   
+                        </div>
+                        <div id="todolist_add">
+                            FUCK THIS SHIT
+                        </div>
+                    </div>
+                    <div id="todolist_schedule">
+                        <div id="todolist_title">
+                            Schedule
+                        </div>
+                        <div id="todolist_sched_add">
+                            PUTA ANG HIRAP
+                        </div>
+                    </div>
                 </div>
-                   
             </div>
+
     </body>
 </html>
