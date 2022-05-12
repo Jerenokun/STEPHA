@@ -57,14 +57,14 @@ body {
     color: #7191bf;
     z-index: 1;
 }
-#menu_button {
+#home_button {
     width: 55px;
     height: 40px;
     margin: 0 -10px 0 8px;
     vertical-align: middle;
     transition: all 1s;
 }
-#menu_button:hover {
+#home_button:hover {
     filter: brightness(80%);
 }
 #stepha {
