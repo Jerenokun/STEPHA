@@ -119,8 +119,7 @@ input {
     cursor: pointer;
     color: var(--primary_text_color--);
 }
-::webkittime
-#todolist_sched_add {
+::webkittime #todolist_sched_add {
     display: flex;
     flex-direction: column;
     width: 100%;
