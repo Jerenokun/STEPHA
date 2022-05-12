@@ -1,5 +1,5 @@
 #todolist_page{
-    display: none; /* flex */
+    display: flex; /* flex */
     flex-direction: column;
     position: absolute;
     top: 50px;

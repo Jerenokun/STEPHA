@@ -31,10 +31,11 @@ html, body {
 #sidebar{
     position: fixed;
     top: 50px;
-    width: 130px; /* 13% */
+    width: 128px; /* 13% */
     height: 100%;
     line-height: 100%;
-    border-radius: 0 0 80px 0;
+    border-radius: 0 15px 80px 0;
+    border-right: 2px solid #707F96;
     font-family:  'Segoe UI', Tahoma, Verdana, Arial;
     background-color: var(--sidebars_bg_color--);
     color: #7191BF;
@@ -45,4 +46,26 @@ html, body {
     width: 40px;
     height: 40px;
     vertical-align: middle;
+}
+#time{
+    position: absolute;
+    left: 10px;
+    bottom: 130px;
+    color: white;
+    font-size: 21px;
+    font-weight: 600;
+}
+#themesbutton{
+    position: absolute;
+    left: 60px;
+    bottom: 60px;
+    width: 45px;
+    height: 45px;
+}
+#settingsbutton{
+    position: absolute;
+    left: 10px;
+    bottom: 65px;
+    width: 37px;
+    height: 37px;
 }
