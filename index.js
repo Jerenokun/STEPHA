@@ -35,7 +35,7 @@ function AssignActionToButton() {
 function ChangeGreetingText() {
     var currenttime = new Date();
     var hours = currenttime.getHours();
-    var greeting = document.getElementById("greeting")
+    var greeting = document.getElementById("greeting");
     if (hours > 18) {
         var greeting_text = "Good Evening";
     } else if (hours > 12) {
@@ -45,7 +45,7 @@ function ChangeGreetingText() {
     }
     greeting.textContent = greeting_text;
 }
-function UpdateTime(){
+function UpdateTime() {
     var currenttime = new Date();
     var hours = currenttime.getHours();
     var timetag = document.getElementById("time");
@@ -64,9 +64,10 @@ window.onload = function () {
     let homepage = document.getElementById("homepage");
     homepage.style.opacity = 1;
     AssignActionToButton();
-    ChangeGreetingText()
-    UpdateTime()
+    ChangeGreetingText();
+    UpdateTime();
     setInterval(() => {
-        ChangeGreetingText()
-        UpdateTime()}, 5000);
+        ChangeGreetingText();
+        UpdateTime();
+    }, 5000);
 };
