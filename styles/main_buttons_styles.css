@@ -1,4 +1,4 @@
-.main_buttons{
+.main_buttons {
     display: flex;
     position: fixed;
     flex-direction: column;
@@ -9,31 +9,31 @@
     justify-content: center;
     vertical-align: middle;
     font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
 }
 
-.main_buttons_icons{
+.main_buttons_icons {
     height: 60px;
     width: 60px;
 }
-#things_to_do_button{
+#things_to_do_button {
     top: 50px;
     border-radius: 10px 10px 0 0;
-    border: 3px solid #7E2689;
-    background-color: #30034B;
-    color: #BC1AE6;
+    border: 3px solid #7e2689;
+    background-color: #30034b;
+    color: #bc1ae6;
 }
-#daily_reminders_button{
+#daily_reminders_button {
     top: 180px;
-    border: 3px solid #FC9404;
-    background-color: #8D5C3E;
-    color: #FC9404;
+    border: 3px solid #fc9404;
+    background-color: #8d5c3e;
+    color: #fc9404;
 }
-#tools_button{
+#tools_button {
     top: 310px;
     border-radius: 0 0 10px 10px;
-    border: 3px solid #07B1A3;
+    border: 3px solid #07b1a3;
     background-color: #07b1a38c;
-    color: #07B1A3;
+    color: #07b1a3;
 }

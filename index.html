@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>STEPHA</title>
         <!-- styles -->
-        <link href="styles/main_styles.css" rel="stylesheet">
-        <link href="styles/main_buttons_styles.css" rel="stylesheet">
-        <link href="styles/homepage.css" rel="stylesheet">
+        <link href="styles/main_styles.css" rel="stylesheet" />
+        <link href="styles/main_buttons_styles.css" rel="stylesheet" />
+        <link href="styles/homepage.css" rel="stylesheet" />
         <link href="styles/todolist.css" rel="stylesheet" />
 
         <!-- script -->
@@ -17,77 +17,88 @@
     <body>
         <!-- navbar -->
         <div id="navbar">
-            <img src="assets/menu_button.svg" id="menu_button" onclick="home()"/>
+            <img
+                src="assets/menu_button.svg"
+                id="menu_button"
+                onclick="home()"
+            />
             Learn, Focus, Relax!
         </div>
 
-            <!-- sidebar -->
-            <div id="sidebar">
-                <div id="things_to_do_button" class="main_buttons" onclick="todolist_page()">
-                    <img src="assets/todolist_icon.svg" class="main_buttons_icons"/><br />
-                    To do list
-                </div>
-                <div id="daily_reminders_button" class="main_buttons">
-                    <img src="assets/dailyreminders_icon.svg" class="main_buttons_icons"/><br />
-                    Daily Reminders
-                </div>
-                <div id="tools_button" class="main_buttons">
-                    <img src="assets/tools_icon.svg" class="main_buttons_icons"><br>
-                    Tools
-                </div>
-                <span id="time"></span>
-                <img src="assets/lightmodebutton.svg" id="themesbutton">
-                <img src="assets/setting_icon.svg" id="settingsbutton">
+        <!-- sidebar -->
+        <div id="sidebar">
+            <div
+                id="things_to_do_button"
+                class="main_buttons"
+                onclick="todolist_page()"
+            >
+                <img
+                    src="assets/todolist_icon.svg"
+                    class="main_buttons_icons"
+                /><br />
+                To do list
             </div>
+            <div id="daily_reminders_button" class="main_buttons">
+                <img
+                    src="assets/dailyreminders_icon.svg"
+                    class="main_buttons_icons"
+                /><br />
+                Daily Reminders
+            </div>
+            <div id="tools_button" class="main_buttons">
+                <img
+                    src="assets/tools_icon.svg"
+                    class="main_buttons_icons"
+                /><br />
+                Tools
+            </div>
+            <span id="time"></span>
+            <img src="assets/lightmodebutton.svg" id="themesbutton" />
+            <img src="assets/setting_icon.svg" id="settingsbutton" />
+        </div>
 
-            <!-- Main_content, basically where most of the stuff is placed -->
-            <div id="main_content">
-                <!-- This is the home page -->
-                <div id="homepage">
-                    <div id="homepage_col1">
-                        <span style="font-size: 35px;font-weight: 700">STEPHA </span>
-                        <img src="assets/stepha_icon.svg">
-                        <span id="greeting">Good Morning Andy</span>
-                        <div class="homepage_content_area">
-                            This is for le blockies
-                        </div>
-                    </div>
-                    <div id="homepage_col2">
-                        <div class="homepage_content_area">
-                            This is for le other blockies or in technical terms content_area
-                        </div>
+        <!-- Main_content, basically where most of the stuff is placed -->
+        <div id="main_content">
+            <!-- This is the home page -->
+            <div id="homepage">
+                <div id="homepage_col1">
+                    <span style="font-size: 35px; font-weight: 700"
+                        >STEPHA
+                    </span>
+                    <img src="assets/stepha_icon.svg" />
+                    <span id="greeting">Good Morning Andy</span>
+                    <div class="homepage_content_area">
+                        This is for le blockies
                     </div>
                 </div>
-
-                <!-- This is the todolist page -->
-                <div id="todolist_page">
-                    <div id="todolist_table">
-                        <div id="todolist_title">
-                            To Do List
-                        </div>
-                        <div id="todolist_items">
-                            <p>MATH -  Performance Task 1 | Pre-Calculus Tutor!</p>
-                            <p>ENGLISH - Google Slides on Modifiers</p>
-                            <p>HISTORY - Study about WW2</p>
-                            <p>ICT - Study Java lesson about Inputs and Outputs</p>
-                            <p>ICT - Study Java lesson about Inputs and Outputs</p>   
-                            <p>ICT - Study Java lesson about Inputs and Outputs</p>   
-                            <p>ICT - Study Java lesson about Inputs and Outputs</p>   
-                        </div>
-                        <div id="todolist_add">
-                            
-                        </div>
-                    </div>
-                    <div id="todolist_schedule">
-                        <div id="todolist_title">
-                            Schedule
-                        </div>
-                        <div id="todolist_sched_add">
-                            PUTA ANG HIRAP
-                        </div>
+                <div id="homepage_col2">
+                    <div class="homepage_content_area">
+                        This is for le other blockies or in technical terms
+                        content_area
                     </div>
                 </div>
             </div>
 
+            <!-- This is the todolist page -->
+            <div id="todolist_page">
+                <div id="todolist_table">
+                    <div id="todolist_title">To Do List</div>
+                    <div id="todolist_items">
+                        <p>MATH - Performance Task 1 | Pre-Calculus Tutor!</p>
+                        <p>ENGLISH - Google Slides on Modifiers</p>
+                        <p>HISTORY - Study about WW2</p>
+                        <p>ICT - Study Java lesson about Inputs and Outputs</p>
+                        <p>ICT - Study Java lesson about Inputs and Outputs</p>
+                        <p>ICT - Study Java lesson about Inputs and Outputs</p>
+                        <p>ICT - Study Java lesson about Inputs and Outputs</p>
+                    </div>
+                    <div id="todolist_add"></div>
+                </div>
+                <div id="todolist_schedule">
+                    <div id="todolist_title">Schedule</div>
+                    <div id="todolist_sched_add">PUTA ANG HIRAP</div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

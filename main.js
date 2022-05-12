@@ -1,7 +1,7 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path')
+const { app, BrowserWindow } = require("electron");
+const path = require("path");
 // creating the window
-function createwindow(){
+function createwindow() {
     let mainwin = new BrowserWindow({
         minWidth: 1000,
         minHeight: 700,
@@ -11,23 +11,23 @@ function createwindow(){
             nodeIntegration: true,
         },
     });
-// loading the html
-    mainwin.loadFile('index.html');
-// Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
+    // loading the html
+    mainwin.loadFile("index.html");
+    // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
     mainwin.setMenu(null);
-};
+}
 // Runnning the app
 function run_app() {
-    createwindow()
-// For MACOS: To avoid any problems in creating windows when the dock icon is clicked
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) createwindow()
+    createwindow();
+    // For MACOS: To avoid any problems in creating windows when the dock icon is clicked
+    app.on("activate", () => {
+        if (BrowserWindow.getAllWindows().length === 0) createwindow();
     });
 }
 // When the app is ready and everything is good, then it will run the app
-app.whenReady().then(run_app)
+app.whenReady().then(run_app);
 
 // Basically quitting the application once all the windows are closed.
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit();
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") app.quit();
 });
