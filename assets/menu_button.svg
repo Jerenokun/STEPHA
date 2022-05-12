@@ -1,22 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="500" height="400" viewBox="0 0 500 400" xml:space="preserve">
-<desc>Created with Fabric.js 4.2.0</desc>
-<defs>
-</defs>
-<rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
-<g transform="matrix(1 0 0 1 250 200)" id="69da39ad-2920-4e55-9478-99ddd695580a"  >
-<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-opacity: 0; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-250" y="-200" rx="0" ry="0" width="500" height="400" />
-</g>
-<g transform="matrix(Infinity NaN NaN Infinity 0 0)" id="dcf5f5b9-bb49-493f-8fea-aac642e7be6b"  >
-</g>
-<g transform="matrix(5.15 0 0 0.5 250 108.92)" id="a1bb798f-f7c6-4d56-903d-5224fee7ccbd"  >
-<rect style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-37.167" y="-37.167" rx="0" ry="0" width="74.334" height="74.334" />
-</g>
-<g transform="matrix(5.15 0 0 0.5 250 202.75)" id="a1bb798f-f7c6-4d56-903d-5224fee7ccbd"  >
-<rect style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-37.165" y="-37.165" rx="0" ry="0" width="74.33" height="74.33" />
-</g>
-<g transform="matrix(5.15 0 0 0.5 250 291.03)" id="a1bb798f-f7c6-4d56-903d-5224fee7ccbd"  >
-<rect style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-37.165" y="-37.165" rx="0" ry="0" width="74.33" height="74.33" />
-</g>
+<?xml version="1.0"?><svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <title>small house</title>
+ <metadata id="metadata7">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g id="layer1">
+   <path fill="#FFFFFF" stroke-width="0.4" stroke-miterlimit="4" id="rect2391" d="m442.886932,216.75177l0,0zm0,0l-141.401947,-111.003647l-141.4832,111.051712l0,158.686676c0,4.098267 3.735931,7.385803 8.359268,7.385803l88.423584,0l0,-69.575806c0,-4.098236 3.708801,-7.409882 8.332184,-7.409882l72.65506,0c4.62323,0 8.332184,3.311646 8.332184,7.409882l0,69.575806l88.450745,0c4.623322,0 8.332123,-3.287537 8.332123,-7.385803l0,-158.734741zm-282.885132,0.048065l0,0z"/>
+   <path fill="#FFFFFF" stroke-width="0.4" stroke-miterlimit="4" id="path2399" d="m300.66452,45.000011l-200.664467,157.500019l21.137657,21.138184l180.347733,-141.564484l180.30661,141.564484l21.096588,-21.138184l-200.623383,-157.500019l-0.779816,0.8004l-0.820923,-0.8004z"/>
+   <path fill="#FFFFFF" stroke-width="0.4" stroke-miterlimit="4" id="rect2404" d="m160.001785,67.671478l50.869003,0l-0.443207,26.707245l-50.425797,40.380371l0,-67.087616z"/>
+  </g>
+ </g>
 </svg>

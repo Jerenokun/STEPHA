@@ -20,7 +20,6 @@
             <img
                 src="assets/menu_button.svg"
                 id="menu_button"
-                onclick="home()"
             />
             Learn, Focus, Relax!
         </div>
@@ -30,7 +29,6 @@
             <div
                 id="things_to_do_button"
                 class="main_buttons"
-                onclick="todolist_page()"
             >
                 <img
                     src="assets/todolist_icon.svg"
@@ -68,13 +66,29 @@
                     <img src="assets/stepha_icon.svg" />
                     <span id="greeting">Good Morning Andy</span>
                     <div class="homepage_content_area">
-                        This is for le blockies
+                        <div class="homepage_title">Today's Quote</div>
+                        <div id="daily_quote">
+                            "Stop waiting for your own miracle, make it!" -
+                            Bullet Lim Santiago
+                        </div>
+                    </div>
+                    <div class="homepage_content_area">
+                        <div class="homepage_title">Music Playing</div>
+                        <div class="homepage_content">
+                            Never Gonna Give You Up By Rick Astley <br> 2:20 | 2 more
+                            songs in queue
+                        </div>
                     </div>
                 </div>
                 <div id="homepage_col2">
                     <div class="homepage_content_area">
-                        This is for le other blockies or in technical terms
-                        content_area
+                        <div class="homepage_title">
+                            To Do List | Schedule
+                        </div>
+                        <div class="homepage_content" style="text-align: center;">
+                            You have nothing to do for this week, let's celebrate!<br>
+                            <div id='celebration'></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,7 +106,31 @@
                         <p>ICT - Study Java lesson about Inputs and Outputs</p>
                         <p>ICT - Study Java lesson about Inputs and Outputs</p>
                     </div>
-                    <div id="todolist_add"></div>
+                    <div id="todolist_add">
+                        Add task
+                        <div id="todolist_inner">
+                            <div id="task_name_wrapper">
+                                Subject <br />
+                                <input id="task_name" type="text" />
+                            </div>
+                            <div id="task_info_wrapper">
+                                Task Info <br />
+                                <input
+                                    id="task_info"
+                                    type="text"
+                                    style="width: 100%"
+                                />
+                            </div>
+                            <div id="task_deadline_wrapper">
+                                Deadline <br />
+                                Date <input type="date" /> Time
+                                <input
+                                    type="time"
+                                    value="13:05"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="todolist_schedule">
                     <div id="todolist_title">Schedule</div>

@@ -21,12 +21,20 @@
     top: 50px;
     border-radius: 10px 10px 0 0;
     border: 3px solid #7e2689;
+    transition: all 0.5s;
     background-color: #30034b;
     color: #bc1ae6;
+}
+#things_to_do_button:hover,
+#daily_reminders_button:hover,
+#tools_button:hover {
+    width: 150px;
+    filter: brightness(120%);
 }
 #daily_reminders_button {
     top: 180px;
     border: 3px solid #fc9404;
+    transition: all 0.5s;
     background-color: #8d5c3e;
     color: #fc9404;
 }
@@ -34,6 +42,7 @@
     top: 310px;
     border-radius: 0 0 10px 10px;
     border: 3px solid #07b1a3;
-    background-color: #07b1a38c;
+    transition: all 0.5s;
+    background-color: #068075;
     color: #07b1a3;
 }

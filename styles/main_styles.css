@@ -6,10 +6,26 @@
 :root {
     --window_bg_color--: black;
     --sidebars_bg_color--: #1e1e1e;
+    --scrollbar_color--: #7e2689;
+    --scrollbarthumb_color: #581761;
     --stepha_font_color--: white;
     --primary_text_color--: white;
     --title_text_color--: white;
     --block_bg_color--: #1e1e1e;
+    --filter--: 100%;
+    --url: url("/assets/celebration.svg");
+}
+:root.dark_mode {
+    --window_bg_color--: white;
+    --sidebars_bg_color--: #30034B;
+    --scrollbar_color--: #7e2689;
+    --scrollbarthumb_color: #581761;
+    --stepha_font_color--:  black;
+    --primary_text_color--: black;
+    --title_text_color--: white;
+    --block_bg_color--: #F8F5F5;
+    --filter--: 0%;
+    --url: url("/assets/celebration[darkmode].svg");
 }
 html,
 body {
@@ -21,7 +37,7 @@ body {
     position: fixed;
     width: 100%;
     margin-bottom: 100px;
-    padding: 5px 20px;
+    padding: 5px 0;
     font-size: 18px;
     font-family: "Segoe UI", Tahoma, Verdana, Arial;
     background-color: var(--sidebars_bg_color--);
@@ -35,16 +51,21 @@ body {
     height: 100%;
     line-height: 100%;
     border-radius: 0 15px 80px 0;
-    border-right: 2px solid #707f96;
+    border-right: 2px solid var(--sidebar_outline---);
     font-family: "Segoe UI", Tahoma, Verdana, Arial;
     background-color: var(--sidebars_bg_color--);
     color: #7191bf;
     z-index: 1;
 }
 #menu_button {
-    width: 40px;
+    width: 55px;
     height: 40px;
+    margin: 0 -10px 0 8px;
     vertical-align: middle;
+    transition: all 1s;
+}
+#menu_button:hover {
+    filter: brightness(80%);
 }
 #time {
     position: absolute;
@@ -67,4 +88,13 @@ body {
     bottom: 65px;
     width: 37px;
     height: 37px;
+}
+::-webkit-scrollbar {
+    border: 2px solid var(--scrollbar_color--);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar_color--);
+    border: 2px solid var(--scrollbarthumb_color);
+    border-radius: 5px;
 }
