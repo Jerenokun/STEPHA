@@ -42,7 +42,7 @@ body {
     font-family: "Segoe UI", Tahoma, Verdana, Arial;
     background-color: var(--sidebars_bg_color--);
     color: var(--title_text_color--);
-    z-index: 1;
+    z-index: 5;
 }
 #sidebar {
     position: fixed;

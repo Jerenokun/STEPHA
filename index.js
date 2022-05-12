@@ -27,17 +27,28 @@ function changetheme() {
 }
 
 function AssignActionToButton() {
-    document.getElementById("menu_button").onclick = home;
+    document.getElementById("home_button").onclick = home;
     document.getElementById("things_to_do_button").onclick = todolist_page;
     document.getElementById("themesbutton").onclick = changetheme;
 }
-window.onload = function () {
-    let homepage = document.getElementById("homepage");
-    let currenttime = new Date();
-    let timetag = document.getElementById("time");
+
+function ChangeGreetingText() {
+    var currenttime = new Date();
     var hours = currenttime.getHours();
-    homepage.style.opacity = 1;
-    AssignActionToButton();
+    var greeting = document.getElementById("greeting")
+    if (hours > 18) {
+        var greeting_text = "Good Evening";
+    } else if (hours > 12) {
+        var greeting_text = "Good Afternoon";
+    } else {
+        var greeting_text = "Good Morning";
+    }
+    greeting.textContent = greeting_text;
+}
+function UpdateTime(){
+    var currenttime = new Date();
+    var hours = currenttime.getHours();
+    var timetag = document.getElementById("time");
     if (hours > 11) {
         var meridiem = "pm";
         if (hours > 12) {
@@ -48,18 +59,14 @@ window.onload = function () {
         2,
         "0"
     )} ${meridiem}`;
+}
+window.onload = function () {
+    let homepage = document.getElementById("homepage");
+    homepage.style.opacity = 1;
+    AssignActionToButton();
+    ChangeGreetingText()
+    UpdateTime()
     setInterval(() => {
-        currenttime = new Date();
-        hours = currenttime.getHours();
-        if (hours > 11) {
-            meridiem = "pm";
-            if (hours > 12) {
-                hours = hours - 12;
-            }
-        }
-        timetag.textContent = `${hours}:${String(
-            currenttime.getMinutes()
-        ).padStart(2, "0")} ${meridiem}`;
-        console.log("yes");
-    }, 5000);
+        ChangeGreetingText()
+        UpdateTime()}, 5000);
 };
