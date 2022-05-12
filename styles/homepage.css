@@ -1,4 +1,4 @@
-#homepage{
+#homepage {
     display: none; /* grid */
     position: absolute;
     top: 50px;
@@ -9,20 +9,21 @@
     grid-template-columns: 50% 50%;
     color: white;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;   
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
 }
-#homepage_col1{
+#homepage_col1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 20px;
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
 }
-#homepage_col1 img{
+#homepage_col1 img {
     width: 300px;
 }
-.homepage_content_area{
+.homepage_content_area {
     background-color: red;
     /*me need help here boiz */
 }
