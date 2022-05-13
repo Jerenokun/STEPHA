@@ -11,11 +11,6 @@ function show_page(p) {
     page.style.zIndex = 3;
     page.style.opacity = 1;
 }
-function changetheme() {
-    var colors_list = document.querySelector(":root");
-    colors_list.classList.toggle("dark_mode");
-}
-
 function AssignActionToButton() {
     document.getElementById("home_button").addEventListener("click", () => {
         hide_pages();
@@ -29,7 +24,6 @@ function AssignActionToButton() {
         hide_pages();
         show_page("reminders_page");
     });
-    document.getElementsByClassName("add_task").addEventListener("click", )
     document.getElementById("themesbutton").addEventListener('click', () => {
         let colors_list = document.querySelector(":root");
         colors_list.classList.toggle("dark_mode");
