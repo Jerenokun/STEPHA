@@ -46,7 +46,7 @@
                 Tools
             </div>
             <span id="time"></span>
-            <img src="assets/lightmodebutton.svg" id="themesbutton" />
+            <div id="themesbutton"></div>
             <img src="assets/setting_icon.svg" id="settingsbutton" />
         </div>
 
@@ -113,12 +113,12 @@
                             <div id="task_deadline_wrapper">
                                 Deadline <br />
                                 Date <input id="task_date" type="date" /> Time
-                                <input type="time" value="13:05" />
+                                <input id="task_time" type="time" />
                             </div>
                         </div>
                     </div>
                     <div id="add_task_wrapper">
-                        <input class="add_task" type="button" value="Add task">
+                        <input class="add_task" id="add_task" type="button" value="Add task">
                     </div>
                 </div>
                 <!-- Will be removed for the mean time -->

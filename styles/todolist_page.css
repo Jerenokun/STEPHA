@@ -97,7 +97,7 @@
     flex: 3;
     text-align: center;
 }
-input:not(.add_task) {
+input {
     border-radius: 5px;
     padding: 3px;
     border-style: solid;
@@ -111,9 +111,8 @@ input:not(.add_task) {
     justify-content: center;
     width: 100%;
 }
-.add_task {
-    width: 100px;
-    padding: 3px;
+#add_task {
+    padding: 4px 15px;
     border-radius: 5px;
     border-style: solid;
     border-color: #9b88a5;
@@ -121,13 +120,14 @@ input:not(.add_task) {
     background-color: #7e2689;
     transition: all 0.5s;
     color: white;
+    cursor: pointer;
 
 }
-.add_task:hover{
+#add_task:hover{
     background-color: #442a47;
 
 }
-.add_task:active{
+#add_task:active{
     background-color: #823a8a;
     transition: all 0.1s;
 }
