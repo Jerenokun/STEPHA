@@ -29,6 +29,7 @@ function AssignActionToButton() {
         hide_pages();
         show_page("reminders_page");
     });
+    document.getElementsByClassName("add_task").addEventListener("click", )
     document.getElementById("themesbutton").addEventListener('click', () => {
         let colors_list = document.querySelector(":root");
         colors_list.classList.toggle("dark_mode");
