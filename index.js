@@ -1,25 +1,15 @@
-let allpages = ["homepage", "todolist_page"];
-function todolist_page() {
+let allpages = ["homepage", "todolist_page", "reminders_page"];
+function hide_pages() {
     for (let i = 0; i < allpages.length; i++) {
         let page = document.getElementById(allpages[i]);
         page.style.opacity = 0;
         page.style.zIndex = 1;
     }
-    let page2 = document.getElementById("todolist_page");
-    page2.style.zIndex = 3;
-    page2.style.opacity = 1;
-    console.log("todo");
 }
-function home() {
-    for (let i = 0; i < allpages.length; i++) {
-        let page = document.getElementById(allpages[i]);
-        page.style.opacity = 0;
-        page.style.zIndex = 1;
-    }
-    let page2 = document.getElementById("homepage");
-    page2.style.zIndex = 3;
-    page2.style.opacity = 1;
-    console.log("home");
+function show_page(p) {
+    let page = document.getElementById(p);
+    page.style.zIndex = 3;
+    page.style.opacity = 1;
 }
 function changetheme() {
     var colors_list = document.querySelector(":root");
@@ -27,9 +17,22 @@ function changetheme() {
 }
 
 function AssignActionToButton() {
-    document.getElementById("home_button").onclick = home;
-    document.getElementById("things_to_do_button").onclick = todolist_page;
-    document.getElementById("themesbutton").onclick = changetheme;
+    document.getElementById("home_button").addEventListener("click", () => {
+        hide_pages();
+        show_page("homepage");
+    });
+    document.getElementById("things_to_do_button").addEventListener("click", () => {
+        hide_pages();
+        show_page("todolist_page");
+    });
+    document.getElementById('daily_reminders_button').addEventListener("click", () => {
+        hide_pages();
+        show_page("reminders_page");
+    });
+    document.getElementById("themesbutton").addEventListener('click', () => {
+        let colors_list = document.querySelector(":root");
+        colors_list.classList.toggle("dark_mode");
+    });
 }
 
 function ChangeGreetingText() {
@@ -61,8 +64,7 @@ function UpdateTime() {
     )} ${meridiem}`;
 }
 window.onload = function () {
-    let homepage = document.getElementById("homepage");
-    homepage.style.opacity = 1;
+    show_page("homepage");
     AssignActionToButton();
     ChangeGreetingText();
     UpdateTime();
