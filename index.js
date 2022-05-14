@@ -63,33 +63,54 @@ function AddTask() {
         let TodolistItemsText = document.getElementById("todolist_items").innerText;
         let TodolistItems = document.getElementById("todolist_items");
         var TodolistTable = document.createElement("table");
-        var tr = document.createElement("tr")
-        var td = document.createElement("td")
-        var td2 = document.createElement("td")
-        var td3 = document.createElement("td")
+        var CheckBox = document.createElement("input")
+        var TaskRow = document.createElement("tr")
+        var TaskName = document.createElement("td")
+        var TaskInfo = document.createElement("td")
+        var TaskDate = document.createElement("td")
+        var TaskTime = document.createElement("td")
+        var TaskDelete = document.createElement("span")
         var td_text = document.createTextNode(document.getElementById("task_name").value)
         var td2_text = document.createTextNode(document.getElementById("task_info").value)
         var td3_text = document.createTextNode(document.getElementById("task_date").value)
+        var td4_text = document.createTextNode(document.getElementById("task_time").value)
+        var deletetaskbtns = document.getElementsByClassName("deletetask")
+        var TaskDelete_text = document.createTextNode("\u00D7")
         if (TodolistItemsText == "Nothing to do... for now ;)") {
             document.getElementById("todolist_items").innerHTML = "";
             document.getElementById("todolist_items").style.justifyContent = "start";
             TodolistTable.id = "todolist_tableitems"
             TodolistItems.appendChild(TodolistTable)
-
         }
-        td.style.width = "20%"
-        td.appendChild(td_text)
-        td2.style.width = "40%"
-        td2.appendChild(td2_text)
-        td3.style.width = "40%"
-        td3.appendChild(td3_text)
-
-        tr.appendChild(td)
-        tr.appendChild(td2)
-        tr.appendChild(td3)
-        tr.style.display = 'flex'
-        tr.style.flexDirection = "row"
-        document.getElementById("todolist_tableitems").appendChild(tr)
+        CheckBox.type = 'checkbox'
+        CheckBox.style.marginRight = "10px"
+        TaskName.style.width = "10%"
+        TaskName.appendChild(CheckBox)
+        TaskName.appendChild(td_text)
+        TaskInfo.style.width = "40%"
+        TaskInfo.style.paddingRight = "10px"
+        TaskInfo.appendChild(td2_text)
+        TaskDate.style.width = "40%"
+        TaskDate.appendChild(td3_text)
+        TaskTime.style.width = "10%"
+        TaskTime.appendChild(td4_text)
+        TaskDelete.style.marginLeft = "10px"
+        TaskDelete.style.display = "block"
+        TaskDelete.style.cursor = "pointer"
+        TaskDelete.id= "deletetask"
+        TaskDelete.appendChild(TaskDelete_text)
+        TaskRow.appendChild(TaskName)
+        TaskRow.appendChild(TaskInfo)
+        TaskRow.appendChild(TaskDate)
+        TaskRow.appendChild(TaskTime)
+        TaskRow.appendChild(TaskDelete)
+        TaskRow.style.display = 'flex'
+        TaskRow.style.flexDirection = "row"
+        document.getElementById("todolist_tableitems").appendChild(TaskRow)
+        document.getElementById("deletetask").onclick = () => {
+            document.getElementById("deletetask").parentNode.style.display = "none"
+            document.getElementById("todolist_items").innerHTML = ""
+        }
 
 
     }
@@ -143,6 +164,8 @@ function UpdateTime() {
         if (hours > 12) {
             hours = hours - 12;
         }
+    } else {
+        var meridiem = "am";
     }
     timetag.textContent = `${hours}:${String(currenttime.getMinutes()).padStart(
         2,
