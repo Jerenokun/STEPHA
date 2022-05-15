@@ -10,12 +10,12 @@ function createwindow() {
         icon: __dirname + "/assets/stepha_icon.png",
         webPreferences: {
             nodeIntegration: true,
+            contextIsolation: false,
         },
     });
     // loading the html
     mainwin.loadFile("index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
-    mainwin.setMenu(null);
 }
 // Runnning the app
 function run_app() {

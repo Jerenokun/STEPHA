@@ -1,5 +1,7 @@
 const allpages = ["homepage", "todolist_page", "reminders_page"];
+const electron = require('electron')
 var deletetasknum = 0;
+
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
         let page = document.getElementById(allpages[i]);
@@ -77,7 +79,6 @@ function AddTask() {
         CheckBox.type = "checkbox";
         CheckBox.className = "checkmark";
         CheckBox.style.marginRight = "10px";
-
         var TaskName = document.createElement("td");
         var td_text = document.createTextNode(
             document.getElementById("task_name").value
@@ -145,7 +146,16 @@ function AddTask() {
                     ).style.justifyContent = "center";
                 }
             };
+        
         deletetasknum += 1;
+        var anchors = document.getElementsByClassName("checkmark")
+        for(var i = 0; i < anchors.length; i++) {
+            var anchor = anchors[i];
+            anchor.addEventListener('change', function () {
+                this.parentElement.parentElement.className = "done";
+            })
+            
+        }
     }
 }
 
@@ -168,7 +178,7 @@ function AssignActionToButton() {
         });
     document.getElementById("themesbutton").addEventListener("click", () => {
         let colors_list = document.querySelector(":root");
-        
+
         colors_list.classList.toggle("dark_mode");
     });
     document.getElementById("add_task").addEventListener("click", AddTask);
@@ -207,8 +217,34 @@ function UpdateTime() {
 function RemindTasks() {
     try {
         let data = document.getElementById("todolist_tableitems").children;
-        console.log(data[0]);
-    } catch {}
+        for (var i = 0; i < data.length; i++) {
+            let currentdate = new Date();
+            let itemdate = data[i].children[2].innerText;
+            let itemtime = data[i].children[3].innerText;
+            let currenttime = currentdate;
+            currentdate = new Date();
+            currentdate = `${currentdate.getFullYear()}-${String(
+                currentdate.getMonth() + 1
+            ).padStart(2, "0")}-${String(currentdate.getDate()).padStart(
+                2,
+                "0"
+            )}`;
+            currenttime = `${String(currenttime.getHours()).padStart(
+                2,
+                "0"
+            )}:${String(currenttime.getMinutes()).padStart(2, "0")}`;
+            if (data[i].className != "reminded" ) {
+                if (itemdate == currentdate) {
+                    if ((itemtime == currenttime)) {
+                        new Notification("Event", { body: "You have a new event" })
+                        data[i].className = "reminded"
+                    }
+                }
+            } 
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 window.onload = function () {
     ShowPage("homepage");
