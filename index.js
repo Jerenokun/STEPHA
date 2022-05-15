@@ -1,4 +1,5 @@
 let allpages = ["homepage", "todolist_page", "reminders_page"];
+var deletetasknum = 0;
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
         let page = document.getElementById(allpages[i]);
@@ -60,58 +61,75 @@ function CheckTask() {
 function AddTask() {
     
     if (CheckTask()) {
-        let TodolistItemsText = document.getElementById("todolist_items").innerText;
-        let TodolistItems = document.getElementById("todolist_items");
+        var TodolistItemsText = document.getElementById("todolist_items").innerText;
+        var TodolistItems = document.getElementById("todolist_items");
         var TodolistTable = document.createElement("table");
-        var CheckBox = document.createElement("input")
-        var TaskRow = document.createElement("tr")
-        var TaskName = document.createElement("td")
-        var TaskInfo = document.createElement("td")
-        var TaskDate = document.createElement("td")
-        var TaskTime = document.createElement("td")
-        var TaskDelete = document.createElement("span")
-        var td_text = document.createTextNode(document.getElementById("task_name").value)
-        var td2_text = document.createTextNode(document.getElementById("task_info").value)
-        var td3_text = document.createTextNode(document.getElementById("task_date").value)
-        var td4_text = document.createTextNode(document.getElementById("task_time").value)
-        var deletetaskbtns = document.getElementsByClassName("deletetask")
-        var TaskDelete_text = document.createTextNode("\u00D7")
         if (TodolistItemsText == "Nothing to do... for now ;)") {
             document.getElementById("todolist_items").innerHTML = "";
+            document.getElementById("todolist_items").style = "";
             document.getElementById("todolist_items").style.justifyContent = "start";
             TodolistTable.id = "todolist_tableitems"
             TodolistItems.appendChild(TodolistTable)
         }
+
+        var CheckBox = document.createElement("input")
         CheckBox.type = 'checkbox'
+        CheckBox.className = "checkmark"
         CheckBox.style.marginRight = "10px"
+
+        var TaskName = document.createElement("td")
+        var td_text = document.createTextNode(document.getElementById("task_name").value)
         TaskName.style.width = "10%"
         TaskName.appendChild(CheckBox)
         TaskName.appendChild(td_text)
+
+        var TaskInfo = document.createElement("td")
+        var td2_text = document.createTextNode(document.getElementById("task_info").value)
         TaskInfo.style.width = "40%"
         TaskInfo.style.paddingRight = "10px"
         TaskInfo.appendChild(td2_text)
+
+        var TaskDate = document.createElement("td")
+        var td3_text = document.createTextNode(document.getElementById("task_date").value)
         TaskDate.style.width = "40%"
         TaskDate.appendChild(td3_text)
+        
+        var TaskTime = document.createElement("td")
+        var td4_text = document.createTextNode(document.getElementById("task_time").value)
         TaskTime.style.width = "10%"
         TaskTime.appendChild(td4_text)
+
+        var TaskDelete = document.createElement("span")
+        var TaskDelete_text = document.createTextNode("\u00D7")
         TaskDelete.style.marginLeft = "10px"
         TaskDelete.style.display = "block"
         TaskDelete.style.cursor = "pointer"
-        TaskDelete.id= "deletetask"
+        TaskDelete.id = "deletetask" + String(deletetasknum)
+        TaskDelete.className = "deletetask"
         TaskDelete.appendChild(TaskDelete_text)
+        
+        var TaskRow = document.createElement("tr")
+        TaskRow.style.display = 'flex'
+        TaskRow.style.flexDirection = "row"
         TaskRow.appendChild(TaskName)
         TaskRow.appendChild(TaskInfo)
         TaskRow.appendChild(TaskDate)
         TaskRow.appendChild(TaskTime)
         TaskRow.appendChild(TaskDelete)
-        TaskRow.style.display = 'flex'
-        TaskRow.style.flexDirection = "row"
+        const TaskId = "deletetask" + String(deletetasknum)
         document.getElementById("todolist_tableitems").appendChild(TaskRow)
-        document.getElementById("deletetask").onclick = () => {
-            document.getElementById("deletetask").parentNode.style.display = "none"
-            document.getElementById("todolist_items").innerHTML = ""
+        document.getElementById("deletetask" + String(deletetasknum)).onclick = () => {
+            document.getElementById(TaskId).parentElement.remove()
+            TodolistItemsText = document.getElementById("todolist_items").innerText
+            console.log(TodolistItemsText)
+            if (TodolistItemsText == "") {
+                document.getElementById("todolist_items").innerHTML = "Nothing to do... for now ;)"
+                document.getElementById("todolist_items").style.display = "flex";
+                document.getElementById("todolist_items").style.alignItems = "center";
+                document.getElementById("todolist_items").style.justifyContent = "center";
+            }
         }
-
+        deletetasknum += 1;
 
     }
 }

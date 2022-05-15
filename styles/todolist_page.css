@@ -158,3 +158,10 @@ input {
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
 }
+.deletetask:hover{
+    color: #800d4c;
+}
+.checkmark{
+    border-radius: 2px;
+    background-color: red;
+}
