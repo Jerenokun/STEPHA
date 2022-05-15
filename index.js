@@ -1,6 +1,8 @@
 const allpages = ["homepage", "todolist_page", "reminders_page"];
 const electron = require('electron')
 var deletetasknum = 0;
+var reminder202020 = 0
+var remindedmeal = false;
 
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
@@ -236,7 +238,8 @@ function RemindTasks() {
             if (data[i].className != "reminded" ) {
                 if (itemdate == currentdate) {
                     if ((itemtime == currenttime)) {
-                        new Notification("Event", { body: "You have a new event" })
+                        // new Notification("Event", { body: "You have a new event" })
+                        alert("Yo shit is here")
                         data[i].className = "reminded"
                     }
                 }
@@ -244,6 +247,40 @@ function RemindTasks() {
         }
     } catch (error) {
         console.log(error);
+    }
+}
+function Reminder202020() {
+    if (document.getElementById("202020reminder").checked) {
+        reminder202020++;
+    } else {
+        reminder202020 = 0;
+    }
+    if (reminder202020 == 2) {
+        new Notification("202020 Reminder", { body: "20-20-20 Reminder Boi/Girl! Rest your eyes and take a break for at least 20 secs" });
+        reminder202020 = 0;
+    }
+}
+function ReminderMeals() {
+    var currenttime = new Date()
+    if (document.getElementById("breakfastreminder").checked) {
+        if (currenttime.getHours()==7) {
+            new Notification("Eat Breakfast!", { body: "Don't forget to eat your breakfast rn or later!!" });
+        }
+    } 
+    if (document.getElementById("lunchreminder").checked) {
+        if (currenttime.getHours()==12) {
+            new Notification("Eat Lunch!", { body: "Don't forget to eat your lunch rn or later!!" });
+        }
+    } 
+    if (document.getElementById("dinnerreminder").checked) {
+        if (currenttime.getHours()==18 && !remindedmeal) {
+            new Notification("Eat Dinner!", { body: "Don't forget to eat your dinner rn or later!!" });
+            remindedmeal = true;
+        
+        }
+    } 
+    if (currenttime.getHours() != 7 || currenttime.getHours() != 12 || currenttime.getHours() != 18) {
+        remindedmeal = false;
     }
 }
 window.onload = function () {
@@ -255,5 +292,8 @@ window.onload = function () {
         ChangeGreetingText();
         UpdateTime();
         RemindTasks();
+        Reminder202020();
+        ReminderMeals();
     }, 5000);
+    
 };
