@@ -265,11 +265,13 @@ function ReminderMeals() {
     if (document.getElementById("breakfastreminder").checked) {
         if (currenttime.getHours()==7) {
             new Notification("Eat Breakfast!", { body: "Don't forget to eat your breakfast rn or later!!" });
+            remindedmeal = true;
         }
     } 
     if (document.getElementById("lunchreminder").checked) {
         if (currenttime.getHours()==12) {
             new Notification("Eat Lunch!", { body: "Don't forget to eat your lunch rn or later!!" });
+            remindedmeal = true;
         }
     } 
     if (document.getElementById("dinnerreminder").checked) {
