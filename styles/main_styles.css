@@ -8,13 +8,14 @@
     --window_bg_color--: black;
     --sidebars_bg_color--: #1e1e1e;
     --scrollbar_color--: #7e2689;
-    --scrollbarthumb_color: #581761;
+    --scrollbarthumb_color: rgb(69, 2, 78);
     --stepha_font_color--: white;
     --primary_text_color--: white;
     --title_text_color--: white;
     --block_bg_color--: #1e1e1e;
     --filter--: 100%;
-    --url: url("/assets/celebration.svg");
+    --celebration: url("../assets/celebration.svg");
+    --themesbutton: url("../assets/lightmodebutton.svg");    
 }
 :root.dark_mode {
     --window_bg_color--: white;
@@ -26,7 +27,9 @@
     --title_text_color--: white;
     --block_bg_color--: #f8f5f5;
     --filter--: 0%;
-    --url: url("/assets/celebration[darkmode].svg");
+    --celebration: url("../assets/celebration[darkmode].svg");
+    --themesbutton: url("../assets/darkmodebutton.svg");
+
 }
 html,
 body {
@@ -86,7 +89,7 @@ body {
     font-weight: 600;
 }
 #themesbutton {
-    background-image: url("../assets/lightmodebutton.svg");
+    background-image: var(--themesbutton);
     position: absolute;
     left: 60px;
     bottom: 60px;
@@ -106,7 +109,6 @@ body {
 }
 ::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar_color--);
-    box-shadow: inset 0 0 2px 2px white;;
     border: 2px solid var(--scrollbarthumb_color);
     border-radius: 5px;
 }

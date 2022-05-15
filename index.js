@@ -1,4 +1,4 @@
-let allpages = ["homepage", "todolist_page", "reminders_page"];
+const allpages = ["homepage", "todolist_page", "reminders_page"];
 var deletetasknum = 0;
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
@@ -59,80 +59,96 @@ function CheckTask() {
 }
 
 function AddTask() {
-    
     if (CheckTask()) {
-        var TodolistItemsText = document.getElementById("todolist_items").innerText;
+        var TodolistItemsText =
+            document.getElementById("todolist_items").innerText;
         var TodolistItems = document.getElementById("todolist_items");
         var TodolistTable = document.createElement("table");
         if (TodolistItemsText == "Nothing to do... for now ;)") {
             document.getElementById("todolist_items").innerHTML = "";
             document.getElementById("todolist_items").style = "";
-            document.getElementById("todolist_items").style.justifyContent = "start";
-            TodolistTable.id = "todolist_tableitems"
-            TodolistItems.appendChild(TodolistTable)
+            document.getElementById("todolist_items").style.justifyContent =
+                "start";
+            TodolistTable.id = "todolist_tableitems";
+            TodolistItems.appendChild(TodolistTable);
         }
 
-        var CheckBox = document.createElement("input")
-        CheckBox.type = 'checkbox'
-        CheckBox.className = "checkmark"
-        CheckBox.style.marginRight = "10px"
+        var CheckBox = document.createElement("input");
+        CheckBox.type = "checkbox";
+        CheckBox.className = "checkmark";
+        CheckBox.style.marginRight = "10px";
 
-        var TaskName = document.createElement("td")
-        var td_text = document.createTextNode(document.getElementById("task_name").value)
-        TaskName.style.width = "10%"
-        TaskName.appendChild(CheckBox)
-        TaskName.appendChild(td_text)
+        var TaskName = document.createElement("td");
+        var td_text = document.createTextNode(
+            document.getElementById("task_name").value
+        );
+        TaskName.style.width = "10%";
+        TaskName.appendChild(CheckBox);
+        TaskName.appendChild(td_text);
 
-        var TaskInfo = document.createElement("td")
-        var td2_text = document.createTextNode(document.getElementById("task_info").value)
-        TaskInfo.style.width = "40%"
-        TaskInfo.style.paddingRight = "10px"
-        TaskInfo.appendChild(td2_text)
+        var TaskInfo = document.createElement("td");
+        var td2_text = document.createTextNode(
+            document.getElementById("task_info").value
+        );
+        TaskInfo.style.width = "40%";
+        TaskInfo.style.paddingRight = "10px";
+        TaskInfo.appendChild(td2_text);
 
-        var TaskDate = document.createElement("td")
-        var td3_text = document.createTextNode(document.getElementById("task_date").value)
-        TaskDate.style.width = "40%"
-        TaskDate.appendChild(td3_text)
-        
-        var TaskTime = document.createElement("td")
-        var td4_text = document.createTextNode(document.getElementById("task_time").value)
-        TaskTime.style.width = "10%"
-        TaskTime.appendChild(td4_text)
+        var TaskDate = document.createElement("td");
+        var td3_text = document.createTextNode(
+            document.getElementById("task_date").value
+        );
+        TaskDate.style.width = "40%";
+        TaskDate.appendChild(td3_text);
 
-        var TaskDelete = document.createElement("span")
-        var TaskDelete_text = document.createTextNode("\u00D7")
-        TaskDelete.style.marginLeft = "10px"
-        TaskDelete.style.display = "block"
-        TaskDelete.style.cursor = "pointer"
-        TaskDelete.id = "deletetask" + String(deletetasknum)
-        TaskDelete.className = "deletetask"
-        TaskDelete.appendChild(TaskDelete_text)
-        
-        var TaskRow = document.createElement("tr")
-        TaskRow.style.display = 'flex'
-        TaskRow.style.flexDirection = "row"
-        TaskRow.appendChild(TaskName)
-        TaskRow.appendChild(TaskInfo)
-        TaskRow.appendChild(TaskDate)
-        TaskRow.appendChild(TaskTime)
-        TaskRow.appendChild(TaskDelete)
-        const TaskId = "deletetask" + String(deletetasknum)
-        document.getElementById("todolist_tableitems").appendChild(TaskRow)
-        document.getElementById("deletetask" + String(deletetasknum)).onclick = () => {
-            document.getElementById(TaskId).parentElement.remove()
-            TodolistItemsText = document.getElementById("todolist_items").innerText
-            console.log(TodolistItemsText)
-            if (TodolistItemsText == "") {
-                document.getElementById("todolist_items").innerHTML = "Nothing to do... for now ;)"
-                document.getElementById("todolist_items").style.display = "flex";
-                document.getElementById("todolist_items").style.alignItems = "center";
-                document.getElementById("todolist_items").style.justifyContent = "center";
-            }
-        }
+        var TaskTime = document.createElement("td");
+        var td4_text = document.createTextNode(
+            document.getElementById("task_time").value
+        );
+        TaskTime.style.width = "10%";
+        TaskTime.appendChild(td4_text);
+
+        var TaskDelete = document.createElement("span");
+        var TaskDelete_text = document.createTextNode("\u00D7");
+        TaskDelete.style.marginLeft = "10px";
+        TaskDelete.style.display = "block";
+        TaskDelete.style.cursor = "pointer";
+        TaskDelete.id = "deletetask" + String(deletetasknum);
+        TaskDelete.className = "deletetask";
+        TaskDelete.appendChild(TaskDelete_text);
+
+        var TaskRow = document.createElement("tr");
+        TaskRow.style.display = "flex";
+        TaskRow.style.flexDirection = "row";
+        TaskRow.appendChild(TaskName);
+        TaskRow.appendChild(TaskInfo);
+        TaskRow.appendChild(TaskDate);
+        TaskRow.appendChild(TaskTime);
+        TaskRow.appendChild(TaskDelete);
+        const TaskId = "deletetask" + String(deletetasknum);
+        document.getElementById("todolist_tableitems").appendChild(TaskRow);
+        document.getElementById("deletetask" + String(deletetasknum)).onclick =
+            () => {
+                document.getElementById(TaskId).parentElement.remove();
+                TodolistItemsText =
+                    document.getElementById("todolist_items").innerText;
+                console.log(TodolistItemsText);
+                if (TodolistItemsText == "") {
+                    document.getElementById("todolist_items").innerHTML =
+                        "Nothing to do... for now ;)";
+                    document.getElementById("todolist_items").style.display =
+                        "flex";
+                    document.getElementById("todolist_items").style.alignItems =
+                        "center";
+                    document.getElementById(
+                        "todolist_items"
+                    ).style.justifyContent = "center";
+                }
+            };
         deletetasknum += 1;
-
     }
 }
+
 function AssignActionToButton() {
     document.getElementById("home_button").addEventListener("click", () => {
         HidePages();
@@ -152,9 +168,7 @@ function AssignActionToButton() {
         });
     document.getElementById("themesbutton").addEventListener("click", () => {
         let colors_list = document.querySelector(":root");
-        let themesbutton = document.getElementById("themesbutton");
-        themesbutton.style.backgroundImage =
-            "url(../assets/darkmodebutton.svg)";
+        
         colors_list.classList.toggle("dark_mode");
     });
     document.getElementById("add_task").addEventListener("click", AddTask);
@@ -190,6 +204,12 @@ function UpdateTime() {
         "0"
     )} ${meridiem}`;
 }
+function RemindTasks() {
+    try {
+        let data = document.getElementById("todolist_tableitems").children;
+        console.log(data[0]);
+    } catch {}
+}
 window.onload = function () {
     ShowPage("homepage");
     AssignActionToButton();
@@ -198,5 +218,6 @@ window.onload = function () {
     setInterval(() => {
         ChangeGreetingText();
         UpdateTime();
+        RemindTasks();
     }, 5000);
 };

@@ -7,6 +7,7 @@ function createwindow() {
         minHeight: 700,
         width: 1000,
         height: 700,
+        icon: __dirname + "/assets/stepha_icon.png",
         webPreferences: {
             nodeIntegration: true,
         },
