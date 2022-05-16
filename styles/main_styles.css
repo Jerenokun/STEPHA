@@ -31,7 +31,7 @@
     --themesbutton: url("../assets/darkmodebutton.svg");
 
 }
-html,
+
 body {
     background-color: var(--window_bg_color--);
     width: 100%;

@@ -1,8 +1,7 @@
-const allpages = ["homepage", "todolist_page", "reminders_page"];
-const electron = require('electron')
+const allpages = ["homepage", "todolist_page", "reminders_page", "toolspage"];
+
 var deletetasknum = 0;
-var reminder202020 = 0
-var remindedmeal = false;
+var reminder202020 = 0;
 
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
@@ -36,7 +35,6 @@ function CheckTask() {
             currentdate.getMonth() + 1
         ).padStart(2, "0")}-${String(currentdate.getDate()).padStart(2, "0")}`;
         if (inputdate > currentdate) {
-            console.log("sucess");
             return true;
         } else if (inputdate == currentdate) {
             currenttime = `${String(currenttime.getHours()).padStart(
@@ -44,7 +42,6 @@ function CheckTask() {
                 "0"
             )}:${String(currenttime.getMinutes()).padStart(2, "0")}`;
             if (inputtime > currenttime) {
-                console.log("sucess");
                 return true;
             } else {
                 alert(
@@ -135,7 +132,6 @@ function AddTask() {
                 document.getElementById(TaskId).parentElement.remove();
                 TodolistItemsText =
                     document.getElementById("todolist_items").innerText;
-                console.log(TodolistItemsText);
                 if (TodolistItemsText == "") {
                     document.getElementById("todolist_items").innerHTML =
                         "Nothing to do... for now ;)";
@@ -148,49 +144,23 @@ function AddTask() {
                     ).style.justifyContent = "center";
                 }
             };
-        
+
         deletetasknum += 1;
-        var anchors = document.getElementsByClassName("checkmark")
-        for(var i = 0; i < anchors.length; i++) {
+        var anchors = document.getElementsByClassName("checkmark");
+        for (var i = 0; i < anchors.length; i++) {
             var anchor = anchors[i];
-            anchor.addEventListener('change', function () {
+            anchor.addEventListener("change", function () {
                 this.parentElement.parentElement.className = "done";
-            })
-            
+            });
         }
     }
-}
-
-function AssignActionToButton() {
-    document.getElementById("home_button").addEventListener("click", () => {
-        HidePages();
-        ShowPage("homepage");
-    });
-    document
-        .getElementById("things_to_do_button")
-        .addEventListener("click", () => {
-            HidePages();
-            ShowPage("todolist_page");
-        });
-    document
-        .getElementById("daily_reminders_button")
-        .addEventListener("click", () => {
-            HidePages();
-            ShowPage("reminders_page");
-        });
-    document.getElementById("themesbutton").addEventListener("click", () => {
-        let colors_list = document.querySelector(":root");
-
-        colors_list.classList.toggle("dark_mode");
-    });
-    document.getElementById("add_task").addEventListener("click", AddTask);
 }
 
 function ChangeGreetingText() {
     var currenttime = new Date();
     var hours = currenttime.getHours();
     var greeting = document.getElementById("greeting");
-    if (hours > 18) {
+    if (hours > 17) {
         var greeting_text = "Good Evening";
     } else if (hours > 12) {
         var greeting_text = "Good Afternoon";
@@ -235,19 +205,17 @@ function RemindTasks() {
                 2,
                 "0"
             )}:${String(currenttime.getMinutes()).padStart(2, "0")}`;
-            if (data[i].className != "reminded" ) {
+            if (data[i].className != "reminded") {
                 if (itemdate == currentdate) {
-                    if ((itemtime == currenttime)) {
+                    if (itemtime == currenttime) {
                         // new Notification("Event", { body: "You have a new event" })
-                        alert("Yo shit is here")
-                        data[i].className = "reminded"
+                        alert("Yo shit is here");
+                        data[i].className = "reminded";
                     }
                 }
-            } 
+            }
         }
-    } catch (error) {
-        console.log(error);
-    }
+    } catch {}
 }
 function Reminder202020() {
     if (document.getElementById("202020reminder").checked) {
@@ -255,41 +223,90 @@ function Reminder202020() {
     } else {
         reminder202020 = 0;
     }
-    if (reminder202020 == 2) {
-        new Notification("202020 Reminder", { body: "20-20-20 Reminder Boi/Girl! Rest your eyes and take a break for at least 20 secs" });
+    if (reminder202020 == 240) {
+        new Notification("202020 Reminder", {
+            body: "20-20-20 Reminder Boi/Girl! Rest your eyes and take a break for at least 20 secs",
+        });
         reminder202020 = 0;
     }
 }
+let remindedmeal = false;
 function ReminderMeals() {
-    var currenttime = new Date()
+    var currenttime = new Date();
+
     if (document.getElementById("breakfastreminder").checked) {
-        if (currenttime.getHours()==7) {
-            new Notification("Eat Breakfast!", { body: "Don't forget to eat your breakfast rn or later!!" });
+        if (currenttime.getHours() == 7 && !remindedmeal) {
+            new Notification("Eat Breakfast!", {
+                body: "Don't forget to eat your breakfast rn or later!!",
+            });
             remindedmeal = true;
         }
-    } 
+    }
     if (document.getElementById("lunchreminder").checked) {
-        if (currenttime.getHours()==12) {
-            new Notification("Eat Lunch!", { body: "Don't forget to eat your lunch rn or later!!" });
+        if (currenttime.getHours() == 12 && !remindedmeal) {
+            new Notification("Eat Lunch!", {
+                body: "Don't forget to eat your lunch rn or later!!",
+            });
             remindedmeal = true;
         }
-    } 
+    }
     if (document.getElementById("dinnerreminder").checked) {
-        if (currenttime.getHours()==18 && !remindedmeal) {
-            new Notification("Eat Dinner!", { body: "Don't forget to eat your dinner rn or later!!" });
+        if (currenttime.getHours() == 18 && !remindedmeal) {
+            new Notification("Eat Dinner!", {
+                body: "Don't forget to eat your dinner rn or later!!",
+            });
             remindedmeal = true;
-        
         }
-    } 
-    if (currenttime.getHours() != 7 || currenttime.getHours() != 12 || currenttime.getHours() != 18) {
+    }
+    if (
+        currenttime.getHours() != 7 &&
+        currenttime.getHours() != 12 &&
+        currenttime.getHours() != 18
+    ) {
         remindedmeal = false;
     }
 }
+
+function AssignActionToButton() {
+    document.getElementById("home_button").addEventListener("click", () => {
+        HidePages();
+        ShowPage("homepage");
+        document.body.style.overflow = "visible";
+    });
+    document
+        .getElementById("things_to_do_button")
+        .addEventListener("click", () => {
+            HidePages();
+            ShowPage("todolist_page");
+            document.body.style.overflow = "visible";
+        });
+    document
+        .getElementById("daily_reminders_button")
+        .addEventListener("click", () => {
+            HidePages();
+            ShowPage("reminders_page");
+            document.body.style.overflow = "visible";
+        });
+    document.getElementById("tools_button").addEventListener("click", () => {
+        HidePages();
+        ShowPage("toolspage");
+        window.scrollTo(0, 0);
+        document.body.style.overflow = "hidden";
+    });
+    document.getElementById("themesbutton").addEventListener("click", () => {
+        let colors_list = document.querySelector(":root");
+
+        colors_list.classList.toggle("dark_mode");
+    });
+    document.getElementById("add_task").addEventListener("click", AddTask);
+}
+
 window.onload = function () {
     ShowPage("homepage");
     AssignActionToButton();
     ChangeGreetingText();
     UpdateTime();
+    
     setInterval(() => {
         ChangeGreetingText();
         UpdateTime();
@@ -297,5 +314,4 @@ window.onload = function () {
         Reminder202020();
         ReminderMeals();
     }, 5000);
-    
 };
