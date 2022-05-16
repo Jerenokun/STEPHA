@@ -1,5 +1,5 @@
 const allpages = ["homepage", "todolist_page", "reminders_page", "toolspage"];
-
+const electron = require('electron')
 var deletetasknum = 0;
 var reminder202020 = 0;
 
