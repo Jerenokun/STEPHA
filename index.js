@@ -266,7 +266,29 @@ function ReminderMeals() {
         remindedmeal = false;
     }
 }
-
+function PickQuote() {
+    let quotes = ["No one stays the same -- everyone will change who they are to you.",
+        "Being normal is just being good. Being better is just being more. Being great is just being excessive.",
+        "Personality is temporary -- nature isn't. Don't let a bad personality become you're nature.",
+        "What you're wishing for or looking for, you already have. It's just your choice whether or not to use it.", 
+        "A failing person is the effect of a failing teacher.",
+        "Embrace the darkness, become the light.",
+        "Opinions are like a coin: The bad thing about being on one side of a coin is you'll never see your opposite. And the bad thing about being the middle of the coin is you'll never stand by yourself.",
+        "I'd rather live life like the poor than to be privileged and watch the world burn.",
+        "Never fight with stupid people; they always win. Think about it.",
+        "Jeremy: You never start a relationship with lovers.",
+        "We always start as beginners",
+        "Stay normal and regular, but never make it a standard.",
+        "Be positive to live in a lie and never grow. Be negative to face reality and develop.",  
+        "Our purpose in life is not to enjoy it, but to make others do.", 
+        "Remember the things you lost on your way to success.",   
+        "People can grab opportunities, but only a few can hold on to it.",
+        "Stop waiting for your own miracle, make it.",
+        "Make pain an ally and you'll never have to feel it ever again.",
+        "No one has their own life, nor time, nor property, everything belongs to everyone."]
+    let quote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('daily_quote').innerHTML = quote + " - Bullet Lim Santiago"
+}
 function AssignActionToButton() {
     document.getElementById("home_button").addEventListener("click", () => {
         HidePages();
@@ -306,7 +328,7 @@ window.onload = function () {
     AssignActionToButton();
     ChangeGreetingText();
     UpdateTime();
-    
+    PickQuote()
     setInterval(() => {
         ChangeGreetingText();
         UpdateTime();
