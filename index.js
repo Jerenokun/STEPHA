@@ -1,5 +1,7 @@
 const allpages = ["homepage", "todolist_page", "reminders_page", "toolspage"];
-const electron = require('electron')
+const electron = require("electron");
+const fs = require("fs");
+
 var deletetasknum = 0;
 var reminder202020 = 0;
 
@@ -146,13 +148,14 @@ function AddTask() {
             };
 
         deletetasknum += 1;
-        var anchors = document.getElementsByClassName("checkmark");
-        for (var i = 0; i < anchors.length; i++) {
-            var anchor = anchors[i];
+        var checkmarks = document.getElementsByClassName("checkmark");
+        for (var i = 0; i < checkmarks.length; i++) {
+            var anchor = checkmarks[i];
             anchor.addEventListener("change", function () {
                 this.parentElement.parentElement.className = "done";
             });
         }
+        UpdateData();
     }
 }
 
@@ -267,10 +270,11 @@ function ReminderMeals() {
     }
 }
 function PickQuote() {
-    let quotes = ["No one stays the same -- everyone will change who they are to you.",
+    let quotes = [
+        "No one stays the same -- everyone will change who they are to you.",
         "Being normal is just being good. Being better is just being more. Being great is just being excessive.",
         "Personality is temporary -- nature isn't. Don't let a bad personality become you're nature.",
-        "What you're wishing for or looking for, you already have. It's just your choice whether or not to use it.", 
+        "What you're wishing for or looking for, you already have. It's just your choice whether or not to use it.",
         "A failing person is the effect of a failing teacher.",
         "Embrace the darkness, become the light.",
         "Opinions are like a coin: The bad thing about being on one side of a coin is you'll never see your opposite. And the bad thing about being the middle of the coin is you'll never stand by yourself.",
@@ -279,15 +283,17 @@ function PickQuote() {
         "Jeremy: You never start a relationship with lovers.",
         "We always start as beginners",
         "Stay normal and regular, but never make it a standard.",
-        "Be positive to live in a lie and never grow. Be negative to face reality and develop.",  
-        "Our purpose in life is not to enjoy it, but to make others do.", 
-        "Remember the things you lost on your way to success.",   
+        "Be positive to live in a lie and never grow. Be negative to face reality and develop.",
+        "Our purpose in life is not to enjoy it, but to make others do.",
+        "Remember the things you lost on your way to success.",
         "People can grab opportunities, but only a few can hold on to it.",
         "Stop waiting for your own miracle, make it.",
         "Make pain an ally and you'll never have to feel it ever again.",
-        "No one has their own life, nor time, nor property, everything belongs to everyone."]
+        "No one has their own life, nor time, nor property, everything belongs to everyone.",
+    ];
     let quote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById('daily_quote').innerHTML = quote + " - Bullet Lim Santiago"
+    document.getElementById("daily_quote").innerHTML =
+        quote + " - Bullet Lim Santiago";
 }
 function AssignActionToButton() {
     document.getElementById("home_button").addEventListener("click", () => {
@@ -322,18 +328,159 @@ function AssignActionToButton() {
     });
     document.getElementById("add_task").addEventListener("click", AddTask);
 }
+function UpdateData() {
+    fs.readFile("data.json", "utf8", (err, jsonString) => {
+        if (err) {
+            console.log("File read failed:", err);
+            return;
+        }
+        try {
+            let SavedData = JSON.parse(jsonString);
+            try {
+                let TaskSaveData = {
+                    "taskcompleted?": false,
+                    taskname: document.getElementById("task_name").value,
+                    taskinfo: document.getElementById("task_info").value,
+                    taskdate: document.getElementById("task_date").value,
+                    tasktime: document.getElementById("task_time").value,
+                };
+                SavedData["tasks"].push(TaskSaveData);
+                console.log(SavedData);
+                const jsonString = JSON.stringify(SavedData);
+                fs.writeFile("./data.json", jsonString, (err) => {
+                    if (err) {
+                        console.log("Error writing file", err);
+                    } else {
+                        console.log("Successfully wrote file");
+                    }
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    });
+}
+function LoadData() {
+    let SavedDataCollection = require("./data.json");
+    SavedDataCollection = SavedDataCollection["tasks"];
+    var TodolistItems = document.getElementById("todolist_items");
+    var TodolistTable = document.createElement("table");
+    document.getElementById("todolist_items").innerHTML = "";
+    document.getElementById("todolist_items").style = "";
+    document.getElementById("todolist_items").style.justifyContent = "start";
+    TodolistTable.id = "todolist_tableitems";
+    TodolistItems.appendChild(TodolistTable);
+    for (let i = 0; i < SavedDataCollection.length; i++) {
+        let SavedData = SavedDataCollection[i];
 
+        var CheckBox = document.createElement("input");
+        CheckBox.type = "checkbox";
+        CheckBox.className = "checkmark";
+        CheckBox.style.marginRight = "10px";
+        var TaskName = document.createElement("td");
+        var td_text = document.createTextNode(SavedData["taskname"]);
+        TaskName.style.width = "10%";
+        TaskName.appendChild(CheckBox);
+        TaskName.appendChild(td_text);
+
+        var TaskInfo = document.createElement("td");
+        var td2_text = document.createTextNode(SavedData["taskinfo"]);
+        TaskInfo.style.width = "40%";
+        TaskInfo.style.paddingRight = "10px";
+        TaskInfo.appendChild(td2_text);
+
+        var TaskDate = document.createElement("td");
+        var td3_text = document.createTextNode(SavedData["taskdate"]);
+        TaskDate.style.width = "40%";
+        TaskDate.appendChild(td3_text);
+
+        var TaskTime = document.createElement("td");
+        var td4_text = document.createTextNode(SavedData["tasktime"]);
+        TaskTime.style.width = "10%";
+        TaskTime.appendChild(td4_text);
+
+        var TaskDelete = document.createElement("span");
+        var TaskDelete_text = document.createTextNode("\u00D7");
+        TaskDelete.style.marginLeft = "10px";
+        TaskDelete.style.display = "block";
+        TaskDelete.style.cursor = "pointer";
+        TaskDelete.id = "deletetask" + String(deletetasknum);
+        TaskDelete.className = "deletetask";
+        TaskDelete.appendChild(TaskDelete_text);
+
+        var TaskRow = document.createElement("tr");
+        TaskRow.style.display = "flex";
+        TaskRow.style.flexDirection = "row";
+        TaskRow.appendChild(TaskName);
+        TaskRow.appendChild(TaskInfo);
+        TaskRow.appendChild(TaskDate);
+        TaskRow.appendChild(TaskTime);
+        TaskRow.appendChild(TaskDelete);
+        const TaskId = "deletetask" + String(deletetasknum);
+        document.getElementById("todolist_tableitems").appendChild(TaskRow);
+        document.getElementById("deletetask" + String(deletetasknum)).onclick =
+            () => {
+                document.getElementById(TaskId).parentElement.remove();
+                TodolistItemsText =
+                    document.getElementById("todolist_items").innerText;
+                if (TodolistItemsText == "") {
+                    document.getElementById("todolist_items").innerHTML =
+                        "Nothing to do... for now ;)";
+                    document.getElementById("todolist_items").style.display =
+                        "flex";
+                    document.getElementById("todolist_items").style.alignItems =
+                        "center";
+                    document.getElementById(
+                        "todolist_items"
+                    ).style.justifyContent = "center";
+                }
+            };
+        deletetasknum += 1;
+        var checkmarks = document.getElementsByClassName("checkmark");
+        for (let i = 0; i < checkmarks.length; i++) {
+            var checkmark = checkmarks[i];
+            console.log(SavedData["taskcompleted?"]);
+            checkmark.addEventListener("change", function () {
+                this.parentElement.parentElement.className = "done";
+            });
+            if (SavedData["taskcompleted?"]) {
+                checkmark.checked = true;
+                checkmark.parentElement.parentElement.className = "done";
+            }
+        }
+    }
+}
+function StopGameWhenIdle() {
+    let ActiveElem = document.activeElement;
+    if (ActiveElem == document.getElementById("snakegame")) {
+        document.getElementById("snakegame").src = "games/snakegame.html";
+        document.getElementById("stackgame").src = "";
+    } else if (ActiveElem == document.getElementById("stackgame")) {
+        document.getElementById("stackgame").src = "games/stackgame.html";
+        document.getElementById("snakegame").src = "";
+    } else {
+        document.getElementById("stackgame").src = "";
+        document.getElementById("snakegame").src = "";
+    }
+}
 window.onload = function () {
     ShowPage("homepage");
     AssignActionToButton();
     ChangeGreetingText();
     UpdateTime();
-    PickQuote()
+    PickQuote();
+    ChangeGreetingText();
+    RemindTasks();
+    Reminder202020();
+    ReminderMeals();
+    LoadData();
     setInterval(() => {
         ChangeGreetingText();
         UpdateTime();
         RemindTasks();
         Reminder202020();
         ReminderMeals();
-    }, 5000);
+    }, 1000);
 };

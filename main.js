@@ -18,7 +18,7 @@ function createwindow() {
     mainwin.loadFile("index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
 }
-// Runnning the app
+// Runnning the app 
 function run_app() {
     createwindow();
     // For MACOS: To avoid any problems in creating windows when the dock icon is clicked
