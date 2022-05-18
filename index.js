@@ -131,7 +131,30 @@ function AddTask() {
         document.getElementById("todolist_tableitems").appendChild(TaskRow);
         document.getElementById("deletetask" + String(deletetasknum)).onclick =
             () => {
+                let RowIndex =
+                    document.getElementById(TaskId).parentElement.rowIndex;
+                fs.readFile("data.json", "utf8", (err, jsonString) => {
+                    if (err) {
+                        console.log("File read failed:", err);
+                        return;
+                    }
+                    try {
+                        let SavedData = JSON.parse(jsonString);
+                        SavedData["tasks"].splice(RowIndex, 1);
+                        jsonString = JSON.stringify(SavedData);
+                        fs.writeFile("./data.json", jsonString, (err) => {
+                            if (err) {
+                                console.log("Error writing file", err);
+                            } else {
+                                console.log("Successfully wrote file");
+                            }
+                        });
+                    } catch (err) {
+                        console.log(err);
+                    }
+                });
                 document.getElementById(TaskId).parentElement.remove();
+
                 TodolistItemsText =
                     document.getElementById("todolist_items").innerText;
                 if (TodolistItemsText == "") {
@@ -209,11 +232,48 @@ function RemindTasks() {
                 "0"
             )}:${String(currenttime.getMinutes()).padStart(2, "0")}`;
             if (data[i].className != "reminded") {
-                if (itemdate == currentdate) {
-                    if (itemtime == currenttime) {
-                        // new Notification("Event", { body: "You have a new event" })
-                        alert("Yo shit is here");
-                        data[i].className = "reminded";
+                if (data[i].className != "done") {
+                    if (itemdate == currentdate) {
+                        if (itemtime <= currenttime) {
+                            data[i].className = "reminded";
+                            new Notification("Event", {
+                                body: `You have a new event ${data[i].children[1].innerText}`,
+                            });
+                            console.log("sdfsf")
+                            var RowIndex = data[i].rowIndex;
+                            fs.readFile(
+                                "data.json",
+                                "utf8",
+                                (err, jsonString) => {
+                                    if (err) {
+                                        console.log("File read failed:", err);
+                                        return;
+                                    }
+                                    console.log("yes");
+                                    let SavedData = JSON.parse(jsonString);
+                                    SavedData["tasks"][Number(RowIndex)][
+                                        "taskcompleted?"
+                                    ] = "reminded";
+                                    jsonString = JSON.stringify(SavedData);
+                                    fs.writeFile(
+                                        "./data.json",
+                                        jsonString,
+                                        (err) => {
+                                            if (err) {
+                                                console.log(
+                                                    "Error writing file",
+                                                    err
+                                                );
+                                            } else {
+                                                console.log(
+                                                    "Successfully wrote  ffile"
+                                                );
+                                            }
+                                        }
+                                    );
+                                }
+                            );
+                        }
                     }
                 }
             }
@@ -422,7 +482,26 @@ function LoadData() {
         document.getElementById("todolist_tableitems").appendChild(TaskRow);
         document.getElementById("deletetask" + String(deletetasknum)).onclick =
             () => {
+                let RowIndex =
+                    document.getElementById(TaskId).parentElement.rowIndex;
+                fs.readFile("data.json", "utf8", (err, jsonString) => {
+                    if (err) {
+                        console.log("File read failed:", err);
+                        return;
+                    }
+                    let SavedData = JSON.parse(jsonString);
+                    SavedData["tasks"].splice(RowIndex, 1);
+                    jsonString = JSON.stringify(SavedData);
+                    fs.writeFile("./data.json", jsonString, (err) => {
+                        if (err) {
+                            console.log("Error writing file", err);
+                        } else {
+                            console.log("Successfully wrotef file");
+                        }
+                    });
+                });
                 document.getElementById(TaskId).parentElement.remove();
+
                 TodolistItemsText =
                     document.getElementById("todolist_items").innerText;
                 if (TodolistItemsText == "") {
@@ -444,25 +523,48 @@ function LoadData() {
             console.log(SavedData["taskcompleted?"]);
             checkmark.addEventListener("change", function () {
                 this.parentElement.parentElement.className = "done";
+                var RowIndex = this.parentElement.parentElement.rowIndex;
+                fs.readFile("data.json", "utf8", (err, jsonString) => {
+                    if (err) {
+                        console.log("File read failed:", err);
+                        return;
+                    }
+                    let SavedData = JSON.parse(jsonString);
+                    SavedData["tasks"][Number(RowIndex)]["taskcompleted?"] =
+                        "done";
+                    jsonString = JSON.stringify(SavedData);
+                    fs.writeFile("./data.json", jsonString, (err) => {
+                        if (err) {
+                            console.log("Error writing file", err);
+                        } else {
+                            console.log("Successfully wrote  ffile");
+                        }
+                    });
+                });
             });
-            if (SavedData["taskcompleted?"]) {
-                checkmark.checked = true;
-                checkmark.parentElement.parentElement.className = "done";
-            }
+        }
+        if (
+            SavedData["taskcompleted?"] == "done" &&
+            SavedData["taskcompleted?"] != "reminded"
+        ) {
+            checkmark.checked = true;
+            checkmark.parentElement.parentElement.className = "done";
+        }
+        if (SavedData["taskcompleted?"] == "reminded") {
+            checkmark.parentElement.parentElement.className = "reminded";
+        }
+        if (SavedData["taskcompleted?"] == "done") {
+            checkmark.checked = true;
+            checkmark.parentElement.parentElement.className = "done";
         }
     }
-}
-function StopGameWhenIdle() {
-    let ActiveElem = document.activeElement;
-    if (ActiveElem == document.getElementById("snakegame")) {
-        document.getElementById("snakegame").src = "games/snakegame.html";
-        document.getElementById("stackgame").src = "";
-    } else if (ActiveElem == document.getElementById("stackgame")) {
-        document.getElementById("stackgame").src = "games/stackgame.html";
-        document.getElementById("snakegame").src = "";
-    } else {
-        document.getElementById("stackgame").src = "";
-        document.getElementById("snakegame").src = "";
+    if (SavedDataCollection.length == 0) {
+        document.getElementById("todolist_items").innerHTML =
+            "Nothing to do... for now ;)";
+        document.getElementById("todolist_items").style.display = "flex";
+        document.getElementById("todolist_items").style.alignItems = "center";
+        document.getElementById("todolist_items").style.justifyContent =
+            "center";
     }
 }
 window.onload = function () {
@@ -472,10 +574,10 @@ window.onload = function () {
     UpdateTime();
     PickQuote();
     ChangeGreetingText();
+    LoadData();
     RemindTasks();
     Reminder202020();
     ReminderMeals();
-    LoadData();
     setInterval(() => {
         ChangeGreetingText();
         UpdateTime();

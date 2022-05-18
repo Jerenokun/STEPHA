@@ -17,6 +17,7 @@ function createwindow() {
     // loading the html
     mainwin.loadFile("index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
+    // mainwin.setMenu(null)
 }
 // Runnning the app 
 function run_app() {
