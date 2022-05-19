@@ -11,7 +11,7 @@
         <link href="styles/homepage.css" rel="stylesheet" />
         <link href="styles/todolist_page.css" rel="stylesheet" />
         <link href="styles/reminders_page.css" rel="stylesheet" />
-        <link href="styles/toolspage.css" rel="stylesheet">
+        <link href="styles/gamespage.css" rel="stylesheet">
         <!-- script -->
         <script src="index.js"></script>
     </head>
@@ -38,16 +38,23 @@
                 /><br />
                 Daily Reminders
             </div>
-            <div id="tools_button" class="main_buttons">
+            <div id="games_button" class="main_buttons">
                 <img
-                    src="assets/tools_icon.svg"
+                    src="assets/games_icon.svg"
+                    class="main_buttons_icons"
+                    id="games_button_icon"
+                /><br />
+                games
+            </div>
+            <!-- <div id="notes_button" class="main_buttons">
+                <img
+                    src="assets/games_icon.svg"
                     class="main_buttons_icons"
                 /><br />
-                Tools
-            </div>
+                games
+            </div> -->
             <span id="time"></span>
             <div id="themesbutton"></div>
-            <img src="assets/setting_icon.svg" id="settingsbutton" />
         </div>
 
         <!-- Main_content, basically where most of the stuff is placed -->
@@ -67,10 +74,6 @@
                     </div>
                     <div class="homepage_content_area">
                         <div class="homepage_title">Music Playing</div>
-                        <div class="homepage_content">
-                            Never Gonna Give You Up By Rick Astley <br />
-                            2:20 | 2 more songs in queue
-                        </div>
                     </div>
                 </div>
                 <div id="homepage_col2">
@@ -78,7 +81,7 @@
                         <div class="homepage_title">To Do List | Schedule</div>
                         <div
                             class="homepage_content"
-                            style="text-align: center"
+                            id="todolisthomepage"
                         >
                             You have nothing to do for this week, let's
                             celebrate!<br />
@@ -138,23 +141,39 @@
                         Daily Reminders
                     </div>
                     <div id="reminders_content">
-                        <div style="width: 100%;">
-                            <input type="checkbox"  id="202020reminder" >
-                            <label for="202020reminder">202020 Reminder</label><br>
-                            <input type="checkbox" id="breakfastreminder">
-                            <label for="breakfastreminder">Breakfast Reminder</label> <br>
-                            <input type="checkbox" id="lunchreminder" >
-                            <label for="lunchreminder">Lunch Reminder</label><br>
-                            <input type="checkbox" id="dinnerreminder" >
-                            <label for="dinnerreminder">Dinner Reminder</label><br>
+                        <div id="reminders_inner">
+                            <div style="width: 100%;">
+                                <input type="checkbox"  id="202020reminder" >
+                                <label for="202020reminder">202020 Reminder</label><br>
+                                <input type="checkbox" id="breakfastreminder">
+                                <label for="breakfastreminder">Breakfast Reminder</label> <br>
+                                <input type="checkbox" id="lunchreminder" >
+                                <label for="lunchreminder">Lunch Reminder</label><br>
+                                <input type="checkbox" id="dinnerreminder" >
+                                <label for="dinnerreminder">Dinner Reminder</label><br>
+                            </div>
+                            <div id="reminders_list"style="width: 100%;">
+                                Every 20 minutes <br>7 (military time)<br>12 (military time)<br>18 (military time)<br>
+                            </div>
+                        </div> <br>
+                        <b>Edit Reminder</b>
+                        <div id="reminders_edit">
+                            <div style="width: 100%;">
+                                Breakfast Reminder<br>
+                                Lunch Reminder <br>
+                                Dinner Reminder<br>
+                            </div>
+                            <div style="width: 100%;">
+                                <input id="breakfasttime" class="number-input"type="number" min="0" max="23" onkeydown="return false"><br>
+                                <input id="lunchtime" class="number-input" type="number" min="0" max="23"><br>
+                                <input id="dinnertime" class="number-input" type="number" min="0" max="23"><br>
+                            </div>
                         </div>
-                        <div style="width: 100%;">
-                            Every 20 minutes <br>
-                            7 am <br>
-                            12 pm <br>
-                            6 pm <br>
-                        </div>
+                        <input type="button" value="Save" id="save_remindersconfig"> 
+
+                        
                     </div>
+
                     <!-- <div id="reminder_add">
                         Add daily reminder
                         <div id="reminder_inner">
@@ -174,13 +193,13 @@
                 </div>
             </div>
 
-            <!-- This is the tools page -->
-            <div id="toolspage">
-                <div id="toolspage_content_area">
-                    <div id="toolspage_title">
+            <!-- This is the games page -->
+            <div id="gamespage">
+                <div id="gamespage_content_area">
+                    <div id="gamespage_title">
                         Games
                     </div>
-                    <div id="toolspage_content">
+                    <div id="gamespage_content">
                         <embed type="text/html" src="games/snakegame.html" width="500" height="500" id="snakegame">
                         <embed type="text/html" src="games/stackgame.html" width="500" height="500" id="stackgame">
                     </div>

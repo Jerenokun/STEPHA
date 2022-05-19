@@ -1,6 +1,5 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
-require("electron-reload")(__dirname);
 // creating the window
 function createwindow() {
     let mainwin = new BrowserWindow({
@@ -17,7 +16,7 @@ function createwindow() {
     // loading the html
     mainwin.loadFile("index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
-    // mainwin.setMenu(null)
+    mainwin.setMenu(null)
 }
 // Runnning the app 
 function run_app() {
