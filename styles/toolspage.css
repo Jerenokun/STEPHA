@@ -21,7 +21,7 @@
 }
 #toolspage_content_area { 
     width: 80%;
-    height: 600px;
+    height: auto;
     border-radius: 15px; 
     border: 3px solid #7e2689;
     background-color: var(--block_bg_color--);
@@ -38,4 +38,11 @@
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
+}
+#toolspage_content{
+    padding: 50px;
+}
+#notes_part{
+    width: 500px;
+    height: 450px;
 }

@@ -1,4 +1,4 @@
-#gamespage{
+#gamespage {
     opacity: 0;
     display: flex; /* flex */
     flex-direction: column;
@@ -19,10 +19,10 @@
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
 }
-#gamespage_content_area {
+#gamespage_content_area { 
     width: 80%;
-    height: 600px;
-    border-radius: 15px;
+    height: auto;
+    border-radius: 15px; 
     border: 3px solid #7e2689;
     background-color: var(--block_bg_color--);
 }
@@ -40,7 +40,44 @@
     box-sizing: border-box;
 }
 #gamespage_content{
+    padding: 50px;
+}
+#notes_part{
+    width: 500px;
+    height: 450px;
+}
+#snakegame, #stackgame, #snakegame_play, #stackgame_play{
+    border-radius: 10px;
+}
+#snakegame_play, #stackgame_play{
     display: flex;
-    padding:20px;
+    position: absolute;
+    align-items: center;
     justify-content: center;
+    background-color: rgba(60, 29, 63, 0.459);
+    width: 500px;
+    height: 500px;
+    z-index: 5;
+    transition: all 0.5s;
+}
+#snakegame_play_btn, #stackgame_play_btn{
+    padding: 4px 15px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #9b88a5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #612269;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+
+}
+#snakegame_play_btn:hover, #stackgame_play_btn:hover{
+    background-color: #442a47;
+
+}
+#snakegame_play_btn:active, #stackgame_play_btn:active{
+    background-color: #823a8a;
+    transition: all 0.1s;
 }

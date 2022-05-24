@@ -31,6 +31,7 @@
 #tools_button:hover{
     width: 170px;
     filter: brightness(120%);
+    border-radius:  5px;
 }
 #daily_reminders_button {
     top: calc(6.2vh + 12.8% - 0.3vh + 20px + 0.8vh);

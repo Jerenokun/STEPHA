@@ -404,11 +404,15 @@ function AssignActionToButton() {
         HidePages();
         ShowPage("homepage");
         document.body.style.overflow = "visible";
+        document.getElementById("stackgame_play").style.display = "flex";
+        document.getElementById("snakegame_play").style.display = "flex";
     });
     document.getElementById("gototodolist").addEventListener("click", () => {
         HidePages();
         ShowPage("todolist_page");
         document.body.style.overflow = "visible";
+        document.getElementById("stackgame_play").style.display = "flex";
+        document.getElementById("snakegame_play").style.display = "flex";
     });
     document
         .getElementById("things_to_do_button")
@@ -416,6 +420,8 @@ function AssignActionToButton() {
             HidePages();
             ShowPage("todolist_page");
             document.body.style.overflow = "visible";
+            document.getElementById("stackgame_play").style.display = "flex";
+            document.getElementById("snakegame_play").style.display = "flex"
         });
     document
         .getElementById("daily_reminders_button")
@@ -423,18 +429,22 @@ function AssignActionToButton() {
             HidePages();
             ShowPage("reminders_page");
             document.body.style.overflow = "visible";
+            document.getElementById("stackgame_play").style.display = "flex";
+            document.getElementById("snakegame_play").style.display = "flex";
         });
     document.getElementById("games_button").addEventListener("click", () => {
         HidePages();
         ShowPage("gamespage");
         window.scrollTo(0, 0);
-        document.body.style.overflow = "hidden";
     });
     document.getElementById("tools_button").addEventListener("click", () => {
         HidePages();
         ShowPage("toolspage");
         window.scrollTo(0, 0);
         document.body.style.overflow = "hidden";
+        document.body.style.overflow = "visible";
+        document.getElementById("stackgame_play").style.display = "flex";
+        document.getElementById("snakegame_play").style.display = "flex";
     });
     document.getElementById("themesbutton").addEventListener("click", () => {
         let colors_list = document.querySelector(":root");
@@ -503,7 +513,14 @@ function AssignActionToButton() {
             });
         });
     })
-    
+    document.getElementById("snakegame_play_btn").addEventListener("click", () => {
+        document.getElementById("snakegame_play").style.display = "none"
+        document.getElementById("stackgame_play").style.display = "flex"
+    })
+    document.getElementById("stackgame_play_btn").addEventListener("click", () => {
+        document.getElementById("stackgame_play").style.display = "none"
+        document.getElementById("snakegame_play").style.display = "flex"
+    })
 }
 function UpdateData() {
     fs.readFile("data.json", "utf8", (err, jsonString) => {

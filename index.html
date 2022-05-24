@@ -199,10 +199,18 @@
                     <div id="gamespage_title">
                         Games
                     </div>
-                    <div id="gamespage_content">
-                        <embed type="text/html" src="games/snakegame.html" width="500" height="500" id="snakegame">
-                        <div id="snakegame_play"><play></play></div>
-                        <embed type="text/html" src="games/stackgame.html" width="500" height="500" id="stackgame">
+                    <div id="gamespage_content" style="text-align:center">
+                        <div style="display: inline-block;">
+                            <div id="snakegame_play"><span id="snakegame_play_btn">Play Snake Game</span></div>
+                            <embed type="text/html" src="games/snakegame.html" width="500" height="500" id="snakegame">
+
+
+                        </div>
+                        <div style="display: inline-block;">
+                            <div id="stackgame_play"><span id="stackgame_play_btn">Play Stack Game</span></div>
+                            <embed type="text/html" src="games/stackgame.html" width="500" height="500" id="stackgame">
+                        </div>
+                        
                     </div>
                     
                 </div>
@@ -215,7 +223,7 @@
                     </div>
                     <div id="toolspage_content" style="text-align:center">
                         <embed type="text/html" src="scical.html" width="500" height="500">
-                        
+                        <textarea id="notes_part">Add Notes Here</textarea>
                     </div>
                     
                 </div>
