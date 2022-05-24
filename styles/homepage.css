@@ -71,3 +71,28 @@
     background-repeat: no-repeat;
     background-image: var(--celebration);
 }
+#gototodolist{
+    margin: 15px;
+    padding: 10px;
+    padding: 4px 15px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #9b88a5;
+    width: 100px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #7e2689;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+
+}
+#gototodolist:hover{
+    background-color: #442a47;
+
+}
+#gototodolist:active{
+    background-color: #823a8a;
+    transition: all 0.1s;
+}

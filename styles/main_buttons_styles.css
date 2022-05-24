@@ -2,8 +2,8 @@
     display: flex;
     position: fixed;
     flex-direction: column;
-    width: 124px;
-    height: 104px;
+    width: 8%;
+    height: calc(12.8% - 0.3vh);
     padding: 10px 0;
     align-items: center;
     justify-content: center;
@@ -14,33 +14,34 @@
 }
 
 .main_buttons_icons {
-    height: 60px;
-    width: 60px;
+    height: 61px;
+    width: 61px;
 }
 #things_to_do_button {
-    top: 50px;
+    top: 6.2vh;
     border-radius: 0 10px 0 0;
-    border: 3px solid #7e2689;
+    border: 0.4vh solid #7e2689;
     transition: all 0.5s;
     background-color: #30034b;
     color: #bc1ae6;
 }
 #things_to_do_button:hover,
 #daily_reminders_button:hover,
-#games_button:hover {
-    width: 150px;
+#games_button:hover,
+#tools_button:hover{
+    width: 170px;
     filter: brightness(120%);
 }
 #daily_reminders_button {
-    top: 180px;
-    border: 3px solid #fc9404;
+    top: calc(6.2vh + 12.8% - 0.3vh + 20px + 0.8vh);
+    border: 0.4vh solid #fc9404;
     transition: all 0.5s;
     background-color: #8d5c3e;
     color: #fc9404;
 }
 #games_button {
-    top: 310px;
-    border: 3px solid #07b1a3;
+    top: calc(6.2vh + 2*(12.8% - 0.3vh + 20px + 0.8vh));
+    border: 0.4vh solid #07b1a3;
     transition: all 0.5s;
     background-color: #068075;
     color: #07b1a3;
@@ -48,4 +49,15 @@
 #games_button_icon{
     filter: invert(49%) sepia(31%) saturate(3822%) hue-rotate(142deg) brightness(96%);
 
+}
+#tools_button {
+    top: calc(6.2vh + 3*(12.8% - 0.3vh + 20px + 0.8vh));
+    border: 0.4vh  solid #39b807;
+    transition: all 0.5s;
+    background-color: #1a8006;
+    color: #39b807;
+    border-radius: 0 0 10px 10px;
+}
+#tools_button_icon{
+    filter: invert(60%) sepia(92%) saturate(3338%) hue-rotate(68deg) brightness(130%) contrast(94%);
 }

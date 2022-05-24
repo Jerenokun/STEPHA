@@ -1,4 +1,4 @@
-const allpages = ["homepage", "todolist_page", "reminders_page", "gamespage"];
+const allpages = ["homepage", "todolist_page", "reminders_page", "gamespage", "toolspage"];
 const electron = require("electron");
 const fs = require("fs");
 
@@ -405,6 +405,11 @@ function AssignActionToButton() {
         ShowPage("homepage");
         document.body.style.overflow = "visible";
     });
+    document.getElementById("gototodolist").addEventListener("click", () => {
+        HidePages();
+        ShowPage("todolist_page");
+        document.body.style.overflow = "visible";
+    });
     document
         .getElementById("things_to_do_button")
         .addEventListener("click", () => {
@@ -422,6 +427,12 @@ function AssignActionToButton() {
     document.getElementById("games_button").addEventListener("click", () => {
         HidePages();
         ShowPage("gamespage");
+        window.scrollTo(0, 0);
+        document.body.style.overflow = "hidden";
+    });
+    document.getElementById("tools_button").addEventListener("click", () => {
+        HidePages();
+        ShowPage("toolspage");
         window.scrollTo(0, 0);
         document.body.style.overflow = "hidden";
     });
@@ -529,13 +540,19 @@ function UpdateData() {
 }
 function UpdateTodolistHomepage() {
     let todolistitems = document.getElementById("todolist_items")
+    let todolistitemstext = ""
     if (todolistitems.innerHTML == "Nothing to do... for now ;)") {
         document.getElementById("todolisthomepage").style.textAlign = "center"
 
         document.getElementById("todolisthomepage").innerHTML = `You have nothing to do for this week, let's celebrate!<br /> <div id="celebration"></div>`
     } else {
+
         document.getElementById("todolisthomepage").style.textAlign = "left"
-        document.getElementById("todolisthomepage").innerHTML = todolistitems.innerText
+        todolistitems.innerText.split("\u00D7").forEach((item) => {
+            todolistitemstext += `<div style="text-align:justify;margin-bottom:-20px;">${item} <span style="width:100%;display:inline-block"></span></div>` 
+        }
+        )
+        document.getElementById("todolisthomepage").innerHTML = todolistitemstext
     }
 }
 function LoadData() {

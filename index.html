@@ -12,6 +12,7 @@
         <link href="styles/todolist_page.css" rel="stylesheet" />
         <link href="styles/reminders_page.css" rel="stylesheet" />
         <link href="styles/gamespage.css" rel="stylesheet">
+        <link href="styles/toolspage.css" rel="stylesheet">
         <!-- script -->
         <script src="index.js"></script>
     </head>
@@ -46,13 +47,14 @@
                 /><br />
                 games
             </div>
-            <!-- <div id="notes_button" class="main_buttons">
+            <div id="tools_button" class="main_buttons">
                 <img
-                    src="assets/games_icon.svg"
+                    src="assets/tools_icon.svg"
                     class="main_buttons_icons"
+                    id="tools_button_icon"
                 /><br />
-                games
-            </div> -->
+                Tools
+            </div>
             <span id="time"></span>
             <div id="themesbutton"></div>
         </div>
@@ -72,9 +74,6 @@
                             Bullet Lim Santiago
                         </div>
                     </div>
-                    <div class="homepage_content_area">
-                        <div class="homepage_title">Music Playing</div>
-                    </div>
                 </div>
                 <div id="homepage_col2">
                     <div class="homepage_content_area">
@@ -86,7 +85,8 @@
                             You have nothing to do for this week, let's
                             celebrate!<br />
                             <div id="celebration"></div>
-                        </div>
+                        </div> 
+                        <div id="gototodolist">Check Todolist</div>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@
                 </div>
             </div>
 
-            <!-- This is the games page -->
+            <!-- This is the games page --> 
             <div id="gamespage">
                 <div id="gamespage_content_area">
                     <div id="gamespage_title">
@@ -201,11 +201,24 @@
                     </div>
                     <div id="gamespage_content">
                         <embed type="text/html" src="games/snakegame.html" width="500" height="500" id="snakegame">
+                        <div id="snakegame_play"><play></play></div>
                         <embed type="text/html" src="games/stackgame.html" width="500" height="500" id="stackgame">
                     </div>
                     
                 </div>
-    
+            </div>
+            <!-- This is the tools page -->
+            <div id="toolspage">
+                <div id="toolspage_content_area">
+                    <div id="toolspage_title">
+                        Tools
+                    </div>
+                    <div id="toolspage_content" style="text-align:center">
+                        <embed type="text/html" src="scical.html" width="500" height="500">
+                        
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </body>

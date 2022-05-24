@@ -44,6 +44,9 @@ input[type="number"]:focus{
     border:2px solid white;
     caret-color: transparent;
 }
+input{
+    cursor: pointer;
+}
 #reminders_inner, #reminders_edit {
     display: flex;
     flex-direction: row;
