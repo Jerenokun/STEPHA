@@ -1,25 +1,11 @@
 {
-    "name": "stepha",
-    "version": "1.0.0",
-    "description": "",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron ."
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Jerenokun/STEPHA.git"
-    },
-    "author": "",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Jerenokun/STEPHA/issues"
-    },
-    "homepage": "https://github.com/Jerenokun/STEPHA#readme",
-    "devDependencies": {
-        "electron": "^18.2.0"
-    },
-    "dependencies": {
-        "electron-reload": "^2.0.0-alpha.1"
-    }
+  "name": "stepha",
+  "version": "1.0.0",
+  "description": "STEPHA STUDENT APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jerenokun",
+  "license": "MIT"
 }

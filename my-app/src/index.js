@@ -135,7 +135,7 @@ function AddTask() {
             () => {
                 let RowIndex =
                     document.getElementById(TaskId).parentElement.rowIndex;
-                fs.readFile("data.json", "utf8", (err, jsonString) => {
+                fs.readFile("src/data.json", "utf8", (err, jsonString) => {
                     if (err) {
                         console.log("File read failed:", err);
                         return;
@@ -144,7 +144,7 @@ function AddTask() {
                         let SavedData = JSON.parse(jsonString);
                         SavedData["tasks"].splice(RowIndex, 1);
                         jsonString = JSON.stringify(SavedData);
-                        fs.writeFile("./data.json", jsonString, (err) => {
+                        fs.writeFile("src/data.json", jsonString, (err) => {
                             if (err) {
                                 console.log("Error writing file", err);
                             } else {
@@ -235,8 +235,10 @@ function RemindTasks() {
             )}:${String(currenttime.getMinutes()).padStart(2, "0")}`;
             if (data[i].className != "reminded") {
                 if (data[i].className != "done") {
-                    if (itemdate == currentdate) {
-                        if (itemtime <= currenttime) {
+                    console.log(itemtime <= currenttime)
+
+                    if (itemdate <= currentdate) {
+                        if (itemtime <= currenttime || itemdate <= currentdate) {
                             data[i].className = "reminded";
                             new Notification("Event", {
                                 body: `You have a new event ${data[i].children[1].innerText}`,
@@ -244,7 +246,7 @@ function RemindTasks() {
                             console.log("sdfsf")
                             var RowIndex = data[i].rowIndex;
                             fs.readFile(
-                                "data.json",
+                                "src/data.json",
                                 "utf8",
                                 (err, jsonString) => {
                                     if (err) {
@@ -258,7 +260,7 @@ function RemindTasks() {
                                     ] = "reminded";
                                     jsonString = JSON.stringify(SavedData);
                                     fs.writeFile(
-                                        "./data.json",
+                                        "src/data.json",
                                         jsonString,
                                         (err) => {
                                             if (err) {
@@ -358,7 +360,7 @@ function PickQuote() {
         quote + " - Bullet Lim Santiago";
 }
 function UpdateRemindersConfig() {
-    fs.readFile("remindersconfig.json", "utf8", (err, jsonString) => {
+    fs.readFile("src/remindersconfig.json", "utf8", (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err);
             return;
@@ -382,7 +384,7 @@ function UpdateRemindersConfig() {
                 SavedData["lunchtime"] = lunchtime
                 SavedData["dinnertime"] = dinnertime
                 jsonString = JSON.stringify(SavedData)
-                fs.writeFile("./remindersconfig.json", jsonString, (err) => {
+                fs.writeFile("src/remindersconfig.json", jsonString, (err) => {
                     if (err) {
                         console.log("Error writing file", err);
                     } else {
@@ -454,7 +456,7 @@ function AssignActionToButton() {
     document.getElementById("add_task").addEventListener("click", AddTask);
     document.getElementById("save_remindersconfig").addEventListener("click", UpdateRemindersConfig)
     document.getElementById("breakfastreminder").addEventListener("change", () => {
-        fs.readFile("remindercheckboxesconfig.json", "utf8", (err, jsonString) => {
+        fs.readFile("rsrc/emindercheckboxesconfig.json", "utf8", (err, jsonString) => {
             if (err) {
                 console.log("File read failed:", err);
                 return;
@@ -464,7 +466,7 @@ function AssignActionToButton() {
             SavedData["breakfasttime"] =  document.getElementById("breakfastreminder").checked
 
             jsonString = JSON.stringify(SavedData);
-            fs.writeFile("./remindercheckboxesconfig.json", jsonString, (err) => {
+            fs.writeFile("src/remindercheckboxesconfig.json", jsonString, (err) => {
                 if (err) {
                     console.log("Error writing file", err);
                 } else {
@@ -474,7 +476,7 @@ function AssignActionToButton() {
         });
     })
     document.getElementById("lunchreminder").addEventListener("change", () => {
-        fs.readFile("remindercheckboxesconfig.json", "utf8", (err, jsonString) => {
+        fs.readFile("src/remindercheckboxesconfig.json", "utf8", (err, jsonString) => {
             if (err) {
                 console.log("File read failed:", err);
                 return;
@@ -484,7 +486,7 @@ function AssignActionToButton() {
             SavedData["lunchtime"] =  document.getElementById("lunchreminder").checked
 
             jsonString = JSON.stringify(SavedData);
-            fs.writeFile("./remindercheckboxesconfig.json", jsonString, (err) => {
+            fs.writeFile("src/remindercheckboxesconfig.json", jsonString, (err) => {
                 if (err) {
                     console.log("Error writing file", err);
                 } else {
@@ -504,7 +506,7 @@ function AssignActionToButton() {
             SavedData["dinnertime"] =  document.getElementById("dinnerreminder").checked
 
             jsonString = JSON.stringify(SavedData);
-            fs.writeFile("./remindercheckboxesconfig.json", jsonString, (err) => {
+            fs.writeFile("src/remindercheckboxesconfig.json", jsonString, (err) => {
                 if (err) {
                     console.log("Error writing file", err);
                 } else {
@@ -523,7 +525,7 @@ function AssignActionToButton() {
     })
 }
 function UpdateData() {
-    fs.readFile("data.json", "utf8", (err, jsonString) => {
+    fs.readFile("src/data.json", "utf8", (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err);
             return;
@@ -540,7 +542,7 @@ function UpdateData() {
                 };
                 SavedData["tasks"].push(TaskSaveData);
                 const jsonString = JSON.stringify(SavedData);
-                fs.writeFile("./data.json", jsonString, (err) => {
+                fs.writeFile("src/data.json", jsonString, (err) => {
                     if (err) {
                         console.log("Error writing file", err);
                     } else {
@@ -644,7 +646,7 @@ function LoadData() {
             () => {
                 let RowIndex =
                     document.getElementById(TaskId).parentElement.rowIndex;
-                fs.readFile("data.json", "utf8", (err, jsonString) => {
+                fs.readFile("src/data.json", "utf8", (err, jsonString) => {
                     if (err) {
                         console.log("File read failed:", err);
                         return;
@@ -652,7 +654,7 @@ function LoadData() {
                     let SavedData = JSON.parse(jsonString);
                     SavedData["tasks"].splice(RowIndex, 1);
                     jsonString = JSON.stringify(SavedData);
-                    fs.writeFile("./data.json", jsonString, (err) => {
+                    fs.writeFile("src/data.json", jsonString, (err) => {
                         if (err) {
                             console.log("Error writing file", err);
                         } else {
@@ -684,7 +686,7 @@ function LoadData() {
             checkmark.addEventListener("change", function () {
                 this.parentElement.parentElement.className = "done";
                 var RowIndex = this.parentElement.parentElement.rowIndex;
-                fs.readFile("data.json", "utf8", (err, jsonString) => {
+                fs.readFile("src/data.json", "utf8", (err, jsonString) => {
                     if (err) {
                         console.log("File read failed:", err);
                         return;
@@ -693,7 +695,7 @@ function LoadData() {
                     SavedData["tasks"][Number(RowIndex)]["taskcompleted?"] =
                         "done";
                     jsonString = JSON.stringify(SavedData);
-                    fs.writeFile("./data.json", jsonString, (err) => {
+                    fs.writeFile("src/data.json", jsonString, (err) => {
                         if (err) {
                             console.log("Error writing file", err);
                         } else {
