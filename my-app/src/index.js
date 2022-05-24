@@ -1,4 +1,10 @@
-const allpages = ["homepage", "todolist_page", "reminders_page", "gamespage", "toolspage"];
+const allpages = [
+    "homepage",
+    "todolist_page",
+    "reminders_page",
+    "gamespage",
+    "toolspage",
+];
 const electron = require("electron");
 const fs = require("fs");
 
@@ -235,15 +241,15 @@ function RemindTasks() {
             )}:${String(currenttime.getMinutes()).padStart(2, "0")}`;
             if (data[i].className != "reminded") {
                 if (data[i].className != "done") {
-                    console.log(itemtime <= currenttime)
+                    console.log(itemtime <= currenttime);
 
                     if (itemdate <= currentdate) {
-                        if (itemtime <= currenttime || itemdate <= currentdate) {
+                        if (itemtime <= currenttime || itemdate < currentdate) {
                             data[i].className = "reminded";
                             new Notification("Event", {
                                 body: `You have a new event ${data[i].children[1].innerText}`,
                             });
-                            console.log("sdfsf")
+                            console.log("sdfsf");
                             var RowIndex = data[i].rowIndex;
                             fs.readFile(
                                 "src/data.json",
@@ -326,7 +332,7 @@ function ReminderMeals() {
         }
     }
     if (
-        currenttime.getHours() != breakfasttime  &&
+        currenttime.getHours() != breakfasttime &&
         currenttime.getHours() != lunchtime &&
         currenttime.getHours() != dinnertime
     ) {
@@ -370,20 +376,27 @@ function UpdateRemindersConfig() {
             var AnswersNotBlank = true;
             for (let i = 0; i < elements.length; i++) {
                 if (
-                    document.getElementById(elements[i]).value.split(" ").join("") == ""
+                    document
+                        .getElementById(elements[i])
+                        .value.split(" ")
+                        .join("") == ""
                 ) {
                     AnswersNotBlank = false;
                 }
             }
             if (AnswersNotBlank) {
                 let SavedData = JSON.parse(jsonString);
-                breakfasttime = Number(document.getElementById("breakfasttime").value)
-                lunchtime = Number(document.getElementById("lunchtime").value)
-                dinnertime = Number(document.getElementById("dinnertime").value)
-                SavedData["breakfasttime"] = breakfasttime
-                SavedData["lunchtime"] = lunchtime
-                SavedData["dinnertime"] = dinnertime
-                jsonString = JSON.stringify(SavedData)
+                breakfasttime = Number(
+                    document.getElementById("breakfasttime").value
+                );
+                lunchtime = Number(document.getElementById("lunchtime").value);
+                dinnertime = Number(
+                    document.getElementById("dinnertime").value
+                );
+                SavedData["breakfasttime"] = breakfasttime;
+                SavedData["lunchtime"] = lunchtime;
+                SavedData["dinnertime"] = dinnertime;
+                jsonString = JSON.stringify(SavedData);
                 fs.writeFile("src/remindersconfig.json", jsonString, (err) => {
                     if (err) {
                         console.log("Error writing file", err);
@@ -394,8 +407,6 @@ function UpdateRemindersConfig() {
             } else {
                 alert("Please fill up all the fields!");
             }
-            
-
         } catch (err) {
             console.log(err);
         }
@@ -423,7 +434,7 @@ function AssignActionToButton() {
             ShowPage("todolist_page");
             document.body.style.overflow = "visible";
             document.getElementById("stackgame_play").style.display = "flex";
-            document.getElementById("snakegame_play").style.display = "flex"
+            document.getElementById("snakegame_play").style.display = "flex";
         });
     document
         .getElementById("daily_reminders_button")
@@ -454,75 +465,112 @@ function AssignActionToButton() {
         colors_list.classList.toggle("dark_mode");
     });
     document.getElementById("add_task").addEventListener("click", AddTask);
-    document.getElementById("save_remindersconfig").addEventListener("click", UpdateRemindersConfig)
-    document.getElementById("breakfastreminder").addEventListener("change", () => {
-        fs.readFile("rsrc/emindercheckboxesconfig.json", "utf8", (err, jsonString) => {
-            if (err) {
-                console.log("File read failed:", err);
-                return;
-            }
-            let SavedData = JSON.parse(jsonString);
-            console.log(document.getElementById("breakfastreminder").checked)
-            SavedData["breakfasttime"] =  document.getElementById("breakfastreminder").checked
+    document
+        .getElementById("save_remindersconfig")
+        .addEventListener("click", UpdateRemindersConfig);
+    document
+        .getElementById("breakfastreminder")
+        .addEventListener("change", () => {
+            fs.readFile(
+                "rsrc/emindercheckboxesconfig.json",
+                "utf8",
+                (err, jsonString) => {
+                    if (err) {
+                        console.log("File read failed:", err);
+                        return;
+                    }
+                    let SavedData = JSON.parse(jsonString);
+                    console.log(
+                        document.getElementById("breakfastreminder").checked
+                    );
+                    SavedData["breakfasttime"] =
+                        document.getElementById("breakfastreminder").checked;
 
-            jsonString = JSON.stringify(SavedData);
-            fs.writeFile("src/remindercheckboxesconfig.json", jsonString, (err) => {
-                if (err) {
-                    console.log("Error writing file", err);
-                } else {
-                    console.log("Successfully wrote  ffile");
+                    jsonString = JSON.stringify(SavedData);
+                    fs.writeFile(
+                        "src/remindercheckboxesconfig.json",
+                        jsonString,
+                        (err) => {
+                            if (err) {
+                                console.log("Error writing file", err);
+                            } else {
+                                console.log("Successfully wrote  ffile");
+                            }
+                        }
+                    );
                 }
-            });
+            );
         });
-    })
     document.getElementById("lunchreminder").addEventListener("change", () => {
-        fs.readFile("src/remindercheckboxesconfig.json", "utf8", (err, jsonString) => {
-            if (err) {
-                console.log("File read failed:", err);
-                return;
-            }
-            let SavedData = JSON.parse(jsonString);
-            console.log(document.getElementById("lunchreminder").checked)
-            SavedData["lunchtime"] =  document.getElementById("lunchreminder").checked
-
-            jsonString = JSON.stringify(SavedData);
-            fs.writeFile("src/remindercheckboxesconfig.json", jsonString, (err) => {
+        fs.readFile(
+            "src/remindercheckboxesconfig.json",
+            "utf8",
+            (err, jsonString) => {
                 if (err) {
-                    console.log("Error writing file", err);
-                } else {
-                    console.log("Successfully wrote  ffile");
+                    console.log("File read failed:", err);
+                    return;
                 }
-            });
-        });
-    })
+                let SavedData = JSON.parse(jsonString);
+                console.log(document.getElementById("lunchreminder").checked);
+                SavedData["lunchtime"] =
+                    document.getElementById("lunchreminder").checked;
+
+                jsonString = JSON.stringify(SavedData);
+                fs.writeFile(
+                    "src/remindercheckboxesconfig.json",
+                    jsonString,
+                    (err) => {
+                        if (err) {
+                            console.log("Error writing file", err);
+                        } else {
+                            console.log("Successfully wrote  ffile");
+                        }
+                    }
+                );
+            }
+        );
+    });
     document.getElementById("dinnerreminder").addEventListener("change", () => {
-        fs.readFile("remindercheckboxesconfig.json", "utf8", (err, jsonString) => {
-            if (err) {
-                console.log("File read failed:", err);
-                return;
-            }
-            let SavedData = JSON.parse(jsonString);
-            console.log(document.getElementById("dinnerreminder").checked)
-            SavedData["dinnertime"] =  document.getElementById("dinnerreminder").checked
-
-            jsonString = JSON.stringify(SavedData);
-            fs.writeFile("src/remindercheckboxesconfig.json", jsonString, (err) => {
+        fs.readFile(
+            "remindercheckboxesconfig.json",
+            "utf8",
+            (err, jsonString) => {
                 if (err) {
-                    console.log("Error writing file", err);
-                } else {
-                    console.log("Successfully wrote  ffile");
+                    console.log("File read failed:", err);
+                    return;
                 }
-            });
+                let SavedData = JSON.parse(jsonString);
+                console.log(document.getElementById("dinnerreminder").checked);
+                SavedData["dinnertime"] =
+                    document.getElementById("dinnerreminder").checked;
+
+                jsonString = JSON.stringify(SavedData);
+                fs.writeFile(
+                    "src/remindercheckboxesconfig.json",
+                    jsonString,
+                    (err) => {
+                        if (err) {
+                            console.log("Error writing file", err);
+                        } else {
+                            console.log("Successfully wrote  ffile");
+                        }
+                    }
+                );
+            }
+        );
+    });
+    document
+        .getElementById("snakegame_play_btn")
+        .addEventListener("click", () => {
+            document.getElementById("snakegame_play").style.display = "none";
+            document.getElementById("stackgame_play").style.display = "flex";
         });
-    })
-    document.getElementById("snakegame_play_btn").addEventListener("click", () => {
-        document.getElementById("snakegame_play").style.display = "none"
-        document.getElementById("stackgame_play").style.display = "flex"
-    })
-    document.getElementById("stackgame_play_btn").addEventListener("click", () => {
-        document.getElementById("stackgame_play").style.display = "none"
-        document.getElementById("snakegame_play").style.display = "flex"
-    })
+    document
+        .getElementById("stackgame_play_btn")
+        .addEventListener("click", () => {
+            document.getElementById("stackgame_play").style.display = "none";
+            document.getElementById("snakegame_play").style.display = "flex";
+        });
 }
 function UpdateData() {
     fs.readFile("src/data.json", "utf8", (err, jsonString) => {
@@ -558,34 +606,37 @@ function UpdateData() {
     });
 }
 function UpdateTodolistHomepage() {
-    let todolistitems = document.getElementById("todolist_items")
-    let todolistitemstext = ""
+    let todolistitems = document.getElementById("todolist_items");
+    let todolistitemstext = "";
     if (todolistitems.innerHTML == "Nothing to do... for now ;)") {
-        document.getElementById("todolisthomepage").style.textAlign = "center"
+        document.getElementById("todolisthomepage").style.textAlign = "center";
 
-        document.getElementById("todolisthomepage").innerHTML = `You have nothing to do for this week, let's celebrate!<br /> <div id="celebration"></div>`
+        document.getElementById(
+            "todolisthomepage"
+        ).innerHTML = `You have nothing to do for this week, let's celebrate!<br /> <div id="celebration"></div>`;
     } else {
-
-        document.getElementById("todolisthomepage").style.textAlign = "left"
+        document.getElementById("todolisthomepage").style.textAlign = "left";
         todolistitems.innerText.split("\u00D7").forEach((item) => {
-            todolistitemstext += `<div style="text-align:justify;margin-bottom:-20px;">${item} <span style="width:100%;display:inline-block"></span></div>` 
-        }
-        )
-        document.getElementById("todolisthomepage").innerHTML = todolistitemstext
+            todolistitemstext += `<div style="text-align:justify;margin-bottom:-20px;">${item} <span style="width:100%;display:inline-block"></span></div>`;
+        });
+        document.getElementById("todolisthomepage").innerHTML =
+            todolistitemstext;
     }
 }
 function LoadData() {
     let SavedDataCollection = require("./data.json");
-    let remindersconfig = require("./remindersconfig.json")
-    let reminderchecked = require("./remindercheckboxesconfig.json")
-    let breakfast = remindersconfig['breakfasttime']
-    let lunch = remindersconfig['lunchtime']
-    let dinner =  remindersconfig['dinnertime']
-    document.getElementById("reminders_list").innerHTML = ""
-    document.getElementById("reminders_list").innerHTML = `20 minutes <br>${breakfast} (military time)<br>${lunch}(military time)<br>${dinner} (military time)<br>`
-    breakfasttime = breakfast
-    lunchtime = lunch
-    dinnertime = dinner
+    let remindersconfig = require("./remindersconfig.json");
+    let reminderchecked = require("./remindercheckboxesconfig.json");
+    let breakfast = remindersconfig["breakfasttime"];
+    let lunch = remindersconfig["lunchtime"];
+    let dinner = remindersconfig["dinnertime"];
+    document.getElementById("reminders_list").innerHTML = "";
+    document.getElementById(
+        "reminders_list"
+    ).innerHTML = `20 minutes <br>${breakfast} (military time)<br>${lunch}(military time)<br>${dinner} (military time)<br>`;
+    breakfasttime = breakfast;
+    lunchtime = lunch;
+    dinnertime = dinner;
     SavedDataCollection = SavedDataCollection["tasks"];
     var TodolistItems = document.getElementById("todolist_items");
     var TodolistTable = document.createElement("table");
@@ -728,21 +779,15 @@ function LoadData() {
         document.getElementById("todolist_items").style.justifyContent =
             "center";
     }
-    if (
-        reminderchecked["breakfasttime"]    ) {
+    if (reminderchecked["breakfasttime"]) {
         document.getElementById("breakfastreminder").checked = true;
     }
     if (reminderchecked["lunchtime"]) {
         document.getElementById("lunchreminder").checked = true;
-
     }
     if (reminderchecked["dinnertime"]) {
         document.getElementById("dinnerreminder").checked = true;
-
     }
-    
-    
-    
 }
 window.onload = function () {
     ShowPage("homepage");
@@ -755,7 +800,7 @@ window.onload = function () {
     RemindTasks();
     Reminder202020();
     ReminderMeals();
-    UpdateTodolistHomepage()
+    UpdateTodolistHomepage();
     LoadData();
 
     setInterval(() => {
@@ -764,6 +809,6 @@ window.onload = function () {
         RemindTasks();
         Reminder202020();
         ReminderMeals();
-        UpdateTodolistHomepage()
-    }, 1000);
+        UpdateTodolistHomepage();
+    }, 2000);
 };

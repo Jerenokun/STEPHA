@@ -19,7 +19,8 @@
     box-sizing: border-box;
 }
 
-#homepage_col1, #homepage_col2{
+#homepage_col1,
+#homepage_col2 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +41,7 @@
     background-color: var(--block_bg_color--);
     color: var(--primary_text_color--);
 }
-.homepage_title{
+.homepage_title {
     width: 100%;
     height: 50px;
     padding: 15px;
@@ -54,24 +55,24 @@
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
 }
-.homepage_content{
+.homepage_content {
     width: auto;
     padding: 15px;
     font-size: 18px;
 }
-#daily_quote{
+#daily_quote {
     padding: 10px;
     text-align: center;
     font-size: 18px;
 }
-#celebration{
+#celebration {
     width: 200px;
     height: 200px;
     margin: 0 auto;
     background-repeat: no-repeat;
     background-image: var(--celebration);
 }
-#gototodolist{
+#gototodolist {
     margin: 15px;
     padding: 10px;
     padding: 4px 15px;
@@ -81,18 +82,16 @@
     width: 100px;
     text-align: center;
     font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #7e2689;
     transition: all 0.5s;
     color: white;
     cursor: pointer;
-
 }
-#gototodolist:hover{
+#gototodolist:hover {
     background-color: #442a47;
-
 }
-#gototodolist:active{
+#gototodolist:active {
     background-color: #823a8a;
     transition: all 0.1s;
 }

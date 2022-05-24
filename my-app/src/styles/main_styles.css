@@ -15,7 +15,7 @@
     --block_bg_color--: #1e1e1e;
     --filter--: 100%;
     --celebration: url("../assets/celebration.svg");
-    --themesbutton: url("../assets/lightmodebutton.svg");    
+    --themesbutton: url("../assets/lightmodebutton.svg");
 }
 :root.dark_mode {
     --window_bg_color--: white;
@@ -29,7 +29,6 @@
     --filter--: 0%;
     --celebration: url("../assets/celebration[darkmode].svg");
     --themesbutton: url("../assets/darkmodebutton.svg");
-
 }
 
 body {

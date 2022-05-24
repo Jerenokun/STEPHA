@@ -105,7 +105,7 @@ input {
     background-color: var(--block_bg_color--);
     color: var(--primary_text_color--);
 }
-#add_task_wrapper{
+#add_task_wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,18 +116,16 @@ input {
     border-radius: 5px;
     border-style: solid;
     border-color: #9b88a5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #7e2689;
     transition: all 0.5s;
     color: white;
     cursor: pointer;
-
 }
-#add_task:hover{
+#add_task:hover {
     background-color: #442a47;
-
 }
-#add_task:active{
+#add_task:active {
     background-color: #823a8a;
     transition: all 0.1s;
 }
@@ -158,10 +156,10 @@ input {
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
 }
-.deletetask:hover{
+.deletetask:hover {
     color: #800d4c;
 }
-.checkmark{
+.checkmark {
     border-radius: 2px;
     background-color: red;
 }

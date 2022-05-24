@@ -20,15 +20,13 @@
     box-sizing: border-box;
 }
 #reminders_contentarea {
-    
     width: 50%;
     height: 420px;
     border-radius: 15px;
     border: 3px solid #7e2689;
     background-color: var(--block_bg_color--);
-    
 }
-#reminders_content{  
+#reminders_content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -37,21 +35,21 @@
     font-family: Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     color: var(--primary_text_color--);
-
 }
-input[type="number"]:focus{
+input[type="number"]:focus {
     outline: none !important;
-    border:2px solid white;
+    border: 2px solid white;
     caret-color: transparent;
 }
-input{
+input {
     cursor: pointer;
 }
-#reminders_inner, #reminders_edit {
+#reminders_inner,
+#reminders_edit {
     display: flex;
     flex-direction: row;
 }
-input[type="checkbox"]{
+input[type="checkbox"] {
     cursor: pointer;
 }
 #reminders_title {
@@ -74,18 +72,16 @@ input[type="checkbox"]{
     border-style: solid;
     border-color: #9b88a5;
     margin: 10px auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #7e2689;
     transition: all 0.5s;
     color: white;
     cursor: pointer;
-
 }
-#save_remindersconfig:hover{
+#save_remindersconfig:hover {
     background-color: #442a47;
-
 }
-#save_remindersconfig:active{
+#save_remindersconfig:active {
     background-color: #823a8a;
     transition: all 0.1s;
 }
@@ -98,9 +94,9 @@ input[type="checkbox"]{
     justify-content: center;
     font-family: "Segoe UI", Arial, Tahoma, Geneva, Verdana, sans-serif;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    /* -moz-box-sizing: border-box; Firefox, other Gecko */
-    /* box-sizing: border-box; */
-/* } */ 
+/* -moz-box-sizing: border-box; Firefox, other Gecko */
+/* box-sizing: border-box; */
+/* } */
 /* #reminder_inner {
     display: flex;
     flex-direction: row;

@@ -28,10 +28,10 @@
 #things_to_do_button:hover,
 #daily_reminders_button:hover,
 #games_button:hover,
-#tools_button:hover{
+#tools_button:hover {
     width: 170px;
     filter: brightness(120%);
-    border-radius:  5px;
+    border-radius: 5px;
 }
 #daily_reminders_button {
     top: calc(6.2vh + 12.8% - 0.3vh + 20px + 0.8vh);
@@ -41,24 +41,25 @@
     color: #fc9404;
 }
 #games_button {
-    top: calc(6.2vh + 2*(12.8% - 0.3vh + 20px + 0.8vh));
+    top: calc(6.2vh + 2 * (12.8% - 0.3vh + 20px + 0.8vh));
     border: 0.4vh solid #07b1a3;
     transition: all 0.5s;
     background-color: #068075;
     color: #07b1a3;
 }
-#games_button_icon{
-    filter: invert(49%) sepia(31%) saturate(3822%) hue-rotate(142deg) brightness(96%);
-
+#games_button_icon {
+    filter: invert(49%) sepia(31%) saturate(3822%) hue-rotate(142deg)
+        brightness(96%);
 }
 #tools_button {
-    top: calc(6.2vh + 3*(12.8% - 0.3vh + 20px + 0.8vh));
-    border: 0.4vh  solid #39b807;
+    top: calc(6.2vh + 3 * (12.8% - 0.3vh + 20px + 0.8vh));
+    border: 0.4vh solid #39b807;
     transition: all 0.5s;
     background-color: #1a8006;
     color: #39b807;
     border-radius: 0 0 10px 10px;
 }
-#tools_button_icon{
-    filter: invert(60%) sepia(92%) saturate(3338%) hue-rotate(68deg) brightness(130%) contrast(94%);
+#tools_button_icon {
+    filter: invert(60%) sepia(92%) saturate(3338%) hue-rotate(68deg)
+        brightness(130%) contrast(94%);
 }

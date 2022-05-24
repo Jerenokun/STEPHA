@@ -11,8 +11,8 @@
         <link href="styles/homepage.css" rel="stylesheet" />
         <link href="styles/todolist_page.css" rel="stylesheet" />
         <link href="styles/reminders_page.css" rel="stylesheet" />
-        <link href="styles/gamespage.css" rel="stylesheet">
-        <link href="styles/toolspage.css" rel="stylesheet">
+        <link href="styles/gamespage.css" rel="stylesheet" />
+        <link href="styles/toolspage.css" rel="stylesheet" />
         <!-- script -->
         <script src="index.js"></script>
     </head>
@@ -78,14 +78,11 @@
                 <div id="homepage_col2">
                     <div class="homepage_content_area">
                         <div class="homepage_title">To Do List | Schedule</div>
-                        <div
-                            class="homepage_content"
-                            id="todolisthomepage"
-                        >
+                        <div class="homepage_content" id="todolisthomepage">
                             You have nothing to do for this week, let's
                             celebrate!<br />
                             <div id="celebration"></div>
-                        </div> 
+                        </div>
                         <div id="gototodolist">Check Todolist</div>
                     </div>
                 </div>
@@ -95,14 +92,21 @@
             <div id="todolist_page">
                 <div id="todolist_table">
                     <div id="todolist_title">
-                        <table style="width:100%">
+                        <table style="width: 100%">
                             <tr>
-                                <td style="width: 49%;">To Do List</td>
-                                <td style="width: 50%;">Date and Time</td>
+                                <td style="width: 49%">To Do List</td>
+                                <td style="width: 50%">Date and Time</td>
                             </tr>
                         </table>
                     </div>
-                    <div id="todolist_items" style="display:flex;align-items:center;justify-content:center;">
+                    <div
+                        id="todolist_items"
+                        style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        "
+                    >
                         Nothing to do... for now ;)
                     </div>
                     <div id="todolist_add">
@@ -128,50 +132,83 @@
                         </div>
                     </div>
                     <div id="add_task_wrapper">
-                        <input class="add_task" id="add_task" type="button" value="Add task">
+                        <input
+                            class="add_task"
+                            id="add_task"
+                            type="button"
+                            value="Add task"
+                        />
                     </div>
                 </div>
-
             </div>
 
             <!-- This is the reminders page -->
             <div id="reminders_page">
                 <div id="reminders_contentarea">
-                    <div id="reminders_title">
-                        Daily Reminders
-                    </div>
+                    <div id="reminders_title">Daily Reminders</div>
                     <div id="reminders_content">
                         <div id="reminders_inner">
-                            <div style="width: 100%;">
-                                <input type="checkbox"  id="202020reminder" >
-                                <label for="202020reminder">202020 Reminder</label><br>
-                                <input type="checkbox" id="breakfastreminder">
-                                <label for="breakfastreminder">Breakfast Reminder</label> <br>
-                                <input type="checkbox" id="lunchreminder" >
-                                <label for="lunchreminder">Lunch Reminder</label><br>
-                                <input type="checkbox" id="dinnerreminder" >
-                                <label for="dinnerreminder">Dinner Reminder</label><br>
+                            <div style="width: 100%">
+                                <input type="checkbox" id="202020reminder" />
+                                <label for="202020reminder"
+                                    >202020 Reminder</label
+                                ><br />
+                                <input type="checkbox" id="breakfastreminder" />
+                                <label for="breakfastreminder"
+                                    >Breakfast Reminder</label
+                                >
+                                <br />
+                                <input type="checkbox" id="lunchreminder" />
+                                <label for="lunchreminder">Lunch Reminder</label
+                                ><br />
+                                <input type="checkbox" id="dinnerreminder" />
+                                <label for="dinnerreminder"
+                                    >Dinner Reminder</label
+                                ><br />
                             </div>
-                            <div id="reminders_list"style="width: 100%;">
-                                Every 20 minutes <br>7 (military time)<br>12 (military time)<br>18 (military time)<br>
-                            </div>
-                        </div> <br>
-                        <b>Edit Reminder</b>
-                        <div id="reminders_edit">
-                            <div style="width: 100%;">
-                                Breakfast Reminder<br>
-                                Lunch Reminder <br>
-                                Dinner Reminder<br>
-                            </div>
-                            <div style="width: 100%;">
-                                <input id="breakfasttime" class="number-input"type="number" min="0" max="23" onkeydown="return false"><br>
-                                <input id="lunchtime" class="number-input" type="number" min="0" max="23"><br>
-                                <input id="dinnertime" class="number-input" type="number" min="0" max="23"><br>
+                            <div id="reminders_list" style="width: 100%">
+                                Every 20 minutes <br />7 (military time)<br />12
+                                (military time)<br />18 (military time)<br />
                             </div>
                         </div>
-                        <input type="button" value="Save" id="save_remindersconfig"> 
-
-                        
+                        <br />
+                        <b>Edit Reminder</b>
+                        <div id="reminders_edit">
+                            <div style="width: 100%">
+                                Breakfast Reminder<br />
+                                Lunch Reminder <br />
+                                Dinner Reminder<br />
+                            </div>
+                            <div style="width: 100%">
+                                <input
+                                    id="breakfasttime"
+                                    class="number-input"
+                                    type="number"
+                                    min="0"
+                                    max="23"
+                                    onkeydown="return false"
+                                /><br />
+                                <input
+                                    id="lunchtime"
+                                    class="number-input"
+                                    type="number"
+                                    min="0"
+                                    max="23"
+                                /><br />
+                                <input
+                                    id="dinnertime"
+                                    class="number-input"
+                                    type="number"
+                                    min="0"
+                                    max="23"
+                                /><br />
+                            </div>
+                        </div>
+                        <input
+                            type="button"
+                            value="Save"
+                            id="save_remindersconfig"
+                        />
                     </div>
 
                     <!-- <div id="reminder_add">
@@ -193,39 +230,55 @@
                 </div>
             </div>
 
-            <!-- This is the games page --> 
+            <!-- This is the games page -->
             <div id="gamespage">
                 <div id="gamespage_content_area">
-                    <div id="gamespage_title">
-                        Games
-                    </div>
-                    <div id="gamespage_content" style="text-align:center">
-                        <div style="display: inline-block;">
-                            <div id="snakegame_play"><span id="snakegame_play_btn">Play Snake Game</span></div>
-                            <embed type="text/html" src="games/snakegame.html" width="500" height="500" id="snakegame">
-
-
+                    <div id="gamespage_title">Games</div>
+                    <div id="gamespage_content" style="text-align: center">
+                        <div style="display: inline-block">
+                            <div id="snakegame_play">
+                                <span id="snakegame_play_btn"
+                                    >Play Snake Game</span
+                                >
+                            </div>
+                            <embed
+                                type="text/html"
+                                src="games/snakegame.html"
+                                width="500"
+                                height="500"
+                                id="snakegame"
+                            />
                         </div>
-                        <div style="display: inline-block;">
-                            <div id="stackgame_play"><span id="stackgame_play_btn">Play Stack Game</span></div>
-                            <embed type="text/html" src="games/stackgame.html" width="500" height="500" id="stackgame">
+                        <div style="display: inline-block">
+                            <div id="stackgame_play">
+                                <span id="stackgame_play_btn"
+                                    >Play Stack Game</span
+                                >
+                            </div>
+                            <embed
+                                type="text/html"
+                                src="games/stackgame.html"
+                                width="500"
+                                height="500"
+                                id="stackgame"
+                            />
                         </div>
-                        
                     </div>
-                    
                 </div>
             </div>
             <!-- This is the tools page -->
             <div id="toolspage">
                 <div id="toolspage_content_area">
-                    <div id="toolspage_title">
-                        Tools
-                    </div>
-                    <div id="toolspage_content" style="text-align:center">
-                        <embed type="text/html" src="scical.html" width="500" height="500">
+                    <div id="toolspage_title">Tools</div>
+                    <div id="toolspage_content" style="text-align: center">
+                        <embed
+                            type="text/html"
+                            src="scical.html"
+                            width="500"
+                            height="500"
+                        />
                         <textarea id="notes_part">Add Notes Here</textarea>
                     </div>
-                    
                 </div>
             </div>
         </div>
