@@ -8,14 +8,15 @@
     align-items: center;
     justify-content: center;
     vertical-align: middle;
+    text-align: center;
     font-size: 15px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
 }
 
 .main_buttons_icons {
-    height: 61px;
-    width: 61px;
+    height: 7.6vh;
+    width: 7.6vw;
 }
 #things_to_do_button {
     top: 6.2vh;

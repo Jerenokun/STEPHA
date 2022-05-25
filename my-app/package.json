@@ -13,13 +13,15 @@
     },
     "keywords": [],
     "author": {
-      "name": "AGCAL1508",
+      "name": "Jerenokun",
       "email": "AGcaliwag1508@gmail.com"
     },
     "license": "MIT",
     "config": {
       "forge": {
-        "packagerConfig": {},
+        "packagerConfig": {
+          "icon":"src/assets/stepha_icon.icos"
+        },
         "makers": [
           {
             "name": "@electron-forge/maker-squirrel",

@@ -28,7 +28,9 @@
     font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
         "Helvetica Neue", sans-serif;
 }
-
+#homepage_col1{
+    padding-right: 20px;
+}
 #homepage_col1 img {
     width: 300px;
 }

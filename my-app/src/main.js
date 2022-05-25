@@ -14,7 +14,7 @@ const createWindow = () => {
         minHeight: 700,
         width: 1000,
         height: 700,
-        icon: __dirname + "/assets/stepha_icon.png",
+        icon: __dirname + "/assets/stepha_icon.icns",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -24,7 +24,7 @@ const createWindow = () => {
     // loading the html
     mainWindow.loadFile("src/index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
-    mainWindow.setMenu(null);
+    mainWindow.setMenu(null)
 };
 
 // This method will be called when Electron has finished

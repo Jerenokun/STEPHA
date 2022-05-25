@@ -7,12 +7,12 @@ const allpages = [
 ];
 const electron = require("electron");
 const fs = require("fs");
-
 var deletetasknum = 0;
 var reminder202020 = 0;
 var breakfasttime = 7;
 var lunchtime = 12;
 var dinnertime = 18;
+
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
         let page = document.getElementById(allpages[i]);
@@ -141,26 +141,34 @@ function AddTask() {
             () => {
                 let RowIndex =
                     document.getElementById(TaskId).parentElement.rowIndex;
-                fs.readFile("resources/app/src/data.json", "utf8", (err, jsonString) => {
-                    if (err) {
-                        console.log("File read failed:", err);
-                        return;
+                fs.readFile(
+                    "resources/app/src/data.json",
+                    "utf8",
+                    (err, jsonString) => {
+                        if (err) {
+                            console.log("File read failed:", err);
+                            return;
+                        }
+                        try {
+                            let SavedData = JSON.parse(jsonString);
+                            SavedData["tasks"].splice(RowIndex, 1);
+                            jsonString = JSON.stringify(SavedData);
+                            fs.writeFile(
+                                "resources/app/src/data.json",
+                                jsonString,
+                                (err) => {
+                                    if (err) {
+                                        console.log("Error writing file", err);
+                                    } else {
+                                        console.log("Successfully wrote file");
+                                    }
+                                }
+                            );
+                        } catch (err) {
+                            console.log(err);
+                        }
                     }
-                    try {
-                        let SavedData = JSON.parse(jsonString);
-                        SavedData["tasks"].splice(RowIndex, 1);
-                        jsonString = JSON.stringify(SavedData);
-                        fs.writeFile("resources/app/src/data.json", jsonString, (err) => {
-                            if (err) {
-                                console.log("Error writing file", err);
-                            } else {
-                                console.log("Successfully wrote file");
-                            }
-                        });
-                    } catch (err) {
-                        console.log(err);
-                    }
-                });
+                );
                 document.getElementById(TaskId).parentElement.remove();
 
                 TodolistItemsText =
@@ -184,6 +192,35 @@ function AddTask() {
             var anchor = checkmarks[i];
             anchor.addEventListener("change", function () {
                 this.parentElement.parentElement.className = "done";
+                var RowIndex = this.parentElement.parentElement.rowIndex;
+                fs.readFile(
+                    "resources/app/src/data.json",
+                    "utf8",
+                    (err, jsonString) => {
+                        if (err) {
+                            console.log("File read failed:", err);
+                            return;
+                        }
+                        console.log("it works");
+                        let SavedData = JSON.parse(jsonString);
+                        SavedData["tasks"][Number(RowIndex)]["taskcompleted?"] =
+                            "done";
+                        jsonString = JSON.stringify(SavedData);
+                        fs.writeFile(
+                            "resources/app/src/data.json",
+                            jsonString,
+                            (err) => {
+                                if (err) {
+                                    console.log("Error writing file", err);
+                                } else {
+                                    console.log(
+                                        "Successfully updated checkbox"
+                                    );
+                                }
+                            }
+                        );
+                    }
+                );
             });
         }
         UpdateData();
@@ -366,51 +403,61 @@ function PickQuote() {
         quote + " - Bullet Lim Santiago";
 }
 function UpdateRemindersConfig() {
-    fs.readFile("resources/app/src/remindersconfig.json", "utf8", (err, jsonString) => {
-        if (err) {
-            console.log("File read failed:", err);
-            return;
-        }
-        try {
-            let elements = ["breakfasttime", "lunchtime", "dinnertime"];
-            var AnswersNotBlank = true;
-            for (let i = 0; i < elements.length; i++) {
-                if (
-                    document
-                        .getElementById(elements[i])
-                        .value.split(" ")
-                        .join("") == ""
-                ) {
-                    AnswersNotBlank = false;
-                }
+    fs.readFile(
+        "resources/app/src/remindersconfig.json",
+        "utf8",
+        (err, jsonString) => {
+            if (err) {
+                console.log("File read failed:", err);
+                return;
             }
-            if (AnswersNotBlank) {
-                let SavedData = JSON.parse(jsonString);
-                breakfasttime = Number(
-                    document.getElementById("breakfasttime").value
-                );
-                lunchtime = Number(document.getElementById("lunchtime").value);
-                dinnertime = Number(
-                    document.getElementById("dinnertime").value
-                );
-                SavedData["breakfasttime"] = breakfasttime;
-                SavedData["lunchtime"] = lunchtime;
-                SavedData["dinnertime"] = dinnertime;
-                jsonString = JSON.stringify(SavedData);
-                fs.writeFile("resources/app/src/remindersconfig.json", jsonString, (err) => {
-                    if (err) {
-                        console.log("Error writing file", err);
-                    } else {
-                        console.log("Successfully wrote file");
+            try {
+                let elements = ["breakfasttime", "lunchtime", "dinnertime"];
+                var AnswersNotBlank = true;
+                for (let i = 0; i < elements.length; i++) {
+                    if (
+                        document
+                            .getElementById(elements[i])
+                            .value.split(" ")
+                            .join("") == ""
+                    ) {
+                        AnswersNotBlank = false;
                     }
-                });
-            } else {
-                alert("Please fill up all the fields!");
+                }
+                if (AnswersNotBlank) {
+                    let SavedData = JSON.parse(jsonString);
+                    breakfasttime = Number(
+                        document.getElementById("breakfasttime").value
+                    );
+                    lunchtime = Number(
+                        document.getElementById("lunchtime").value
+                    );
+                    dinnertime = Number(
+                        document.getElementById("dinnertime").value
+                    );
+                    SavedData["breakfasttime"] = breakfasttime;
+                    SavedData["lunchtime"] = lunchtime;
+                    SavedData["dinnertime"] = dinnertime;
+                    jsonString = JSON.stringify(SavedData);
+                    fs.writeFile(
+                        "resources/app/src/remindersconfig.json",
+                        jsonString,
+                        (err) => {
+                            if (err) {
+                                console.log("Error writing file", err);
+                            } else {
+                                console.log("Successfully wrote file");
+                            }
+                        }
+                    );
+                } else {
+                    alert("Please fill up all the fields!");
+                }
+            } catch (err) {
+                console.log(err);
             }
-        } catch (err) {
-            console.log(err);
         }
-    });
+    );
 }
 function AssignActionToButton() {
     document.getElementById("home_button").addEventListener("click", () => {
@@ -468,6 +515,34 @@ function AssignActionToButton() {
     document
         .getElementById("save_remindersconfig")
         .addEventListener("click", UpdateRemindersConfig);
+    document.getElementById("202020reminder").addEventListener("change", () => {
+        fs.readFile(
+            "resources/app/src/remindercheckboxesconfig.json",
+            "utf8",
+            (err, jsonString) => {
+                if (err) {
+                    console.log("File read failed:", err);
+                    return;
+                }
+                let SavedData = JSON.parse(jsonString);
+                SavedData["202020reminder"] =
+                    document.getElementById("202020reminder").checked;
+
+                jsonString = JSON.stringify(SavedData);
+                fs.writeFile(
+                    "resources/app/src/remindercheckboxesconfig.json",
+                    jsonString,
+                    (err) => {
+                        if (err) {
+                            console.log("Error writing file", err);
+                        } else {
+                            console.log("Successfully wrote  ffile");
+                        }
+                    }
+                );
+            }
+        );
+    });
     document
         .getElementById("breakfastreminder")
         .addEventListener("change", () => {
@@ -590,13 +665,17 @@ function UpdateData() {
                 };
                 SavedData["tasks"].push(TaskSaveData);
                 const jsonString = JSON.stringify(SavedData);
-                fs.writeFile("resources/app/src/data.json", jsonString, (err) => {
-                    if (err) {
-                        console.log("Error writing file", err);
-                    } else {
-                        console.log("Successfully wrote file");
+                fs.writeFile(
+                    "resources/app/src/data.json",
+                    jsonString,
+                    (err) => {
+                        if (err) {
+                            console.log("Error writing file", err);
+                        } else {
+                            console.log("Successfully wrote file");
+                        }
                     }
-                });
+                );
             } catch (err) {
                 console.log(err);
             }
@@ -652,6 +731,9 @@ function LoadData() {
         CheckBox.type = "checkbox";
         CheckBox.className = "checkmark";
         CheckBox.style.marginRight = "10px";
+        if (SavedData["taskcompleted?"] == "done") {
+            CheckBox.checked = true;
+        }
         var TaskName = document.createElement("td");
         var td_text = document.createTextNode(SavedData["taskname"]);
         TaskName.style.width = "10%";
@@ -697,22 +779,30 @@ function LoadData() {
             () => {
                 let RowIndex =
                     document.getElementById(TaskId).parentElement.rowIndex;
-                fs.readFile("resources/app/src/data.json", "utf8", (err, jsonString) => {
-                    if (err) {
-                        console.log("File read failed:", err);
-                        return;
-                    }
-                    let SavedData = JSON.parse(jsonString);
-                    SavedData["tasks"].splice(RowIndex, 1);
-                    jsonString = JSON.stringify(SavedData);
-                    fs.writeFile("resources/app/src/data.json", jsonString, (err) => {
+                fs.readFile(
+                    "resources/app/src/data.json",
+                    "utf8",
+                    (err, jsonString) => {
                         if (err) {
-                            console.log("Error writing file", err);
-                        } else {
-                            console.log("Successfully wrotef file");
+                            console.log("File read failed:", err);
+                            return;
                         }
-                    });
-                });
+                        let SavedData = JSON.parse(jsonString);
+                        SavedData["tasks"].splice(RowIndex, 1);
+                        jsonString = JSON.stringify(SavedData);
+                        fs.writeFile(
+                            "resources/app/src/data.json",
+                            jsonString,
+                            (err) => {
+                                if (err) {
+                                    console.log("Error writing file", err);
+                                } else {
+                                    console.log("Successfully wrotef file");
+                                }
+                            }
+                        );
+                    }
+                );
                 document.getElementById(TaskId).parentElement.remove();
 
                 TodolistItemsText =
@@ -737,23 +827,34 @@ function LoadData() {
             checkmark.addEventListener("change", function () {
                 this.parentElement.parentElement.className = "done";
                 var RowIndex = this.parentElement.parentElement.rowIndex;
-                fs.readFile("resources/app/src/data.json", "utf8", (err, jsonString) => {
-                    if (err) {
-                        console.log("File read failed:", err);
-                        return;
-                    }
-                    let SavedData = JSON.parse(jsonString);
-                    SavedData["tasks"][Number(RowIndex)]["taskcompleted?"] =
-                        "done";
-                    jsonString = JSON.stringify(SavedData);
-                    fs.writeFile("resources/app/src/data.json", jsonString, (err) => {
+                fs.readFile(
+                    "resources/app/src/data.json",
+                    "utf8",
+                    (err, jsonString) => {
                         if (err) {
-                            console.log("Error writing file", err);
-                        } else {
-                            console.log("Successfully wrote  ffile");
+                            console.log("File read failed:", err);
+                            return;
                         }
-                    });
-                });
+                        console.log("it works");
+                        let SavedData = JSON.parse(jsonString);
+                        SavedData["tasks"][Number(RowIndex)]["taskcompleted?"] =
+                            "done";
+                        jsonString = JSON.stringify(SavedData);
+                        fs.writeFile(
+                            "resources/app/src/data.json",
+                            jsonString,
+                            (err) => {
+                                if (err) {
+                                    console.log("Error writing file", err);
+                                } else {
+                                    console.log(
+                                        "Successfully updated checkbox"
+                                    );
+                                }
+                            }
+                        );
+                    }
+                );
             });
         }
         if (
@@ -779,6 +880,9 @@ function LoadData() {
         document.getElementById("todolist_items").style.justifyContent =
             "center";
     }
+    if (reminderchecked["202020reminder"]) {
+        document.getElementById("202020reminder").checked = true;
+    }
     if (reminderchecked["breakfasttime"]) {
         document.getElementById("breakfastreminder").checked = true;
     }
@@ -790,6 +894,22 @@ function LoadData() {
     }
 }
 window.onload = function () {
+    let CalmMusic = new Audio("audio/startup.mp3");
+    let Startup = new Audio("audio/ready.m4a");
+    CalmMusic.play();
+
+    document.getElementById("startup_img").style.transition = "opacity 3s";
+    document.getElementById("startup_img").style.opacity = "1";
+
+    window.setTimeout(() => {
+        document.getElementById("startup").style.transition = "all 3s";
+        document.getElementById("startup").style.opacity = "0";
+        document.body.style.overflowY = "scroll";
+        Startup.play();
+    }, 15000);
+    window.setTimeout(() => {
+        document.getElementById("startup").style.display = "none";
+    }, 18000);
     ShowPage("homepage");
     AssignActionToButton();
     ChangeGreetingText();

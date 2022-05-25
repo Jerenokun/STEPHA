@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div{
-            height: 1vh;
-            width: 2vw;
-            font-size: calc(2vh + 2vw/2);
-            background-color: red;
-        }
-    </style> 
-</head>
-<body>
-    <div>
-        sadfadf
-    </div>
-</body>
-</html>` 
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                background-color: black;
+                margin: 0;
+            }
+            #startup {
+                opacity: 0;
+                display: flex;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+            }
+
+        </style>
+        <script>
+            CalmMusic = new Audio("audio/startup.mp3");
+            Startup = new Audio("audio/ready.m4a");
+            CalmMusic.play();
+            window.onload = ()=>{
+                document.getElementById("startup").style.transition = "opacity 3s"
+                document.getElementById("startup").style.opacity = "1"
+            }
+            window.setTimeout(() => {
+                document.getElementById("startup").style.transition = "opacity 3s"
+                document.getElementById("startup").style.opacity = "0"
+                Startup.play();
+            }, 15000);
+        </script>
+    </head>
+    <body>
+        <div id="startup">
+            <img id="startup_img" src="assets/stepha_icon.png"> 
+        </div>
+    </body>
+</html>
