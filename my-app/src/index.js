@@ -12,7 +12,8 @@ var reminder202020 = 0;
 var breakfasttime = 7;
 var lunchtime = 12;
 var dinnertime = 18;
-
+var light_mode = new Audio("audio/light.m4a")
+var dark_mode = new Audio("audio/darkness.m4a")
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
         let page = document.getElementById(allpages[i]);
@@ -508,8 +509,21 @@ function AssignActionToButton() {
     });
     document.getElementById("themesbutton").addEventListener("click", () => {
         let colors_list = document.querySelector(":root");
-
         colors_list.classList.toggle("dark_mode");
+        console.log(document.classList)
+        if (colors_list.classList.contains("dark_mode")) {
+            dark_mode.pause()
+            dark_mode.volume = 0
+            light_mode.volume = 1
+            light_mode.currentTime = 0
+            light_mode.play()
+        } else {
+            light_mode.pause()
+            light_mode.volume = 0
+            dark_mode.volume = 1
+            dark_mode.currentTime = 0
+            dark_mode.play()
+        }
     });
     document.getElementById("add_task").addEventListener("click", AddTask);
     document
@@ -639,12 +653,15 @@ function AssignActionToButton() {
         .addEventListener("click", () => {
             document.getElementById("snakegame_play").style.display = "none";
             document.getElementById("stackgame_play").style.display = "flex";
+            document.getElementById("snakegame").focus();
+
         });
     document
         .getElementById("stackgame_play_btn")
         .addEventListener("click", () => {
             document.getElementById("stackgame_play").style.display = "none";
             document.getElementById("snakegame_play").style.display = "flex";
+            document.getElementById("stackgame").focus();
         });
 }
 function UpdateData() {
@@ -893,6 +910,19 @@ function LoadData() {
         document.getElementById("dinnerreminder").checked = true;
     }
 }
+function DisableScrollbarWhenGaming() {
+    let snakegame = document.getElementById("snakegame")
+    let stackgame = document.getElementById("stackgame")
+    let activelement = document.activeElement
+    if (activelement == snakegame) {
+        document.body.style.overflowY = "hidden"
+    } else if (activelement == stackgame) {
+        document.body.style.overflowY = "hidden"
+    } else {
+        document.body.style.overflowY = "scroll"
+
+    }
+}
 window.onload = function () {
     let CalmMusic = new Audio("audio/startup.mp3");
     let Startup = new Audio("audio/ready.m4a");
@@ -909,7 +939,11 @@ window.onload = function () {
     }, 15000);
     window.setTimeout(() => {
         document.getElementById("startup").style.display = "none";
+        setInterval(() => {
+            DisableScrollbarWhenGaming();
+        }, 1000);
     }, 18000);
+
     ShowPage("homepage");
     AssignActionToButton();
     ChangeGreetingText();
@@ -930,5 +964,6 @@ window.onload = function () {
         Reminder202020();
         ReminderMeals();
         UpdateTodolistHomepage();
-    }, 2000);
+    }, 1000);
+    
 };
