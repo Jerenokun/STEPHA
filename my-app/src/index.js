@@ -311,7 +311,7 @@ function RemindTasks() {
                         if (itemtime <= currenttime || itemdate < currentdate) {
                             data[i].className = "reminded";
                             new Notification("Event", {
-                                body: `You have a new event ${data[i].children[1].innerText}`,
+                                body: `You have a new event ${data[i].children[0].innerText} - ${data[i].children[1].innerText}`,
                             });
                             console.log("sdfsf");
                             var RowIndex = data[i].rowIndex;
@@ -572,8 +572,7 @@ function AssignActionToButton() {
         colors_list.classList.toggle("dark_mode");
         console.log(document.classList)
         if (colors_list.classList.contains("dark_mode")) {
-            dark_mode.pause()
-            dark_mode.volume = 0
+            MuteAudio()
             light_mode.volume = 1
             light_mode.currentTime = 0
             light_mode.play()
