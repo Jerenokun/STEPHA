@@ -14,6 +14,9 @@ var lunchtime = 12;
 var dinnertime = 18;
 var light_mode = new Audio("audio/light.m4a")
 var dark_mode = new Audio("audio/darkness.m4a")
+var EnterTimeInFuture = new Audio("audio/EnterTimeIntheFuture.m4a")
+var EnterTodayFutureDate = new Audio("audio/EnterTodayFutureDate.m4a")
+var Fillup = new Audio("audio/FIllup.m4a")
 function HidePages() {
     for (let i = 0; i < allpages.length; i++) {
         let page = document.getElementById(allpages[i]);
@@ -25,6 +28,18 @@ function ShowPage(p) {
     let page = document.getElementById(p);
     page.style.zIndex = 3;
     page.style.opacity = 1;
+}
+function MuteAudio() {
+    dark_mode.pause()
+    dark_mode.volume = 0
+    light_mode.pause()
+    light_mode.volume = 0
+    EnterTimeInFuture.pause()
+    EnterTimeInFuture.volume = 0
+    EnterTodayFutureDate.pause()
+    EnterTodayFutureDate.volume = 0
+    Fillup.pause()
+    Fillup.volume = 0
 }
 function CheckTask() {
     let elements = ["task_name", "task_info", "task_date", "task_time"];
@@ -55,17 +70,28 @@ function CheckTask() {
             if (inputtime > currenttime) {
                 return true;
             } else {
-                alert(
-                    "Please enter a time in the future, not in the past! [Keep In mind, this is military time]"
-                );
+                notify("warning", "Please enter a time in the future, not in the past! [Keep In mind, this is military time]")
+                MuteAudio()
+                EnterTimeInFuture.volume = 1
+                EnterTimeInFuture.currentTime = 0
+                EnterTimeInFuture.play()
+
                 return false;
             }
         } else {
-            alert("Please enter today's date or a date in the future!");
+            notify("warning", "Please enter today's date or a date in the future!")
+            MuteAudio()
+            EnterTodayFutureDate.volume = 1
+            EnterTodayFutureDate.currentTime = 0
+            EnterTodayFutureDate.play()
             return false;
         }
     } else {
-        alert("Please fill up all the fields!");
+        notify("okay", "Please fill up all the fields!")
+        MuteAudio()
+        Fillup.volume = 1
+        Fillup.currentTime = 0
+        Fillup.play()
         return false;
     }
 }
@@ -328,6 +354,36 @@ function RemindTasks() {
         }
     } catch {}
 }
+function notify(type,message){
+    (()=>{
+      let n = document.createElement("div");
+      let delete_notif = document.createElement("span")
+      let id = Math.random().toString(36).substr(2,10);
+      n.setAttribute("id",id);
+      n.classList.add("notification",type);
+      n.innerText = message;
+      delete_notif.innerText = "\u00D7"
+      delete_notif.style.float = "right"
+      delete_notif.style.cursor = "pointer"
+      delete_notif.addEventListener("click", ()=>{
+          document.getElementById(id).remove()
+      })
+      n.appendChild(delete_notif)
+      n.style.textAlign = "left"
+      document.getElementById("notification-area").appendChild(n);
+      
+      setTimeout(()=>{
+        var notifications = document.getElementById("notification-area").getElementsByClassName("notification");
+        for(let i=0;i<notifications.length;i++){
+          if(notifications[i].getAttribute("id") == id){
+            notifications[i].remove();
+            break;
+          }
+        }
+      },10000);
+    })();
+  }
+  
 function Reminder202020() {
     if (document.getElementById("202020reminder").checked) {
         reminder202020++;
@@ -452,7 +508,11 @@ function UpdateRemindersConfig() {
                         }
                     );
                 } else {
-                    alert("Please fill up all the fields!");
+                    notify("okay", "Please fill up all the fields!")
+                    MuteAudio()
+                    Fillup.volume = 1
+                    Fillup.currentTime = 0
+                    Fillup.play()
                 }
             } catch (err) {
                 console.log(err);

@@ -24,7 +24,7 @@ const createWindow = () => {
     // loading the html
     mainWindow.loadFile("src/index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
-    mainWindow.setMenu(null)
+    // mainWindow.setMenu(null)
 };
 
 // This method will be called when Electron has finished
