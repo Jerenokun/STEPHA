@@ -104,7 +104,7 @@
                             id="btn"
                             type="button"
                             value="1"
-                            OnClick="calc.display.value+='1'"
+                            OnClick="calcdisplayval('1')"
                         />
                     </td>
 
@@ -113,7 +113,7 @@
                             id="btn"
                             type="button"
                             value="2"
-                            OnClick="calc.display.value+='2'"
+                            OnClick="calcdisplayval('2')"
                         />
                     </td>
 
@@ -122,7 +122,7 @@
                             id="btn"
                             type="button"
                             value="3"
-                            OnClick="calc.display.value+='3'"
+                            OnClick="calcdisplayval('3')"
                         />
                     </td>
 
@@ -131,7 +131,7 @@
                             id="btn"
                             type="button"
                             value="C"
-                            OnClick="calc.display.value=''"
+                            OnClick="calcdisplayval('delete')"
                         />
                     </td>
                     <td>
@@ -158,7 +158,7 @@
                             id="btn"
                             type="button"
                             value="4"
-                            OnClick="calc.display.value+='4'"
+                            OnClick="calcdisplayval('4')"
                         />
                     </td>
 
@@ -167,7 +167,6 @@
                             id="btn"
                             type="button"
                             value="5"
-                            OnClick="calc.display.value+='5'"
                         />
                     </td>
 
@@ -176,7 +175,6 @@
                             id="btn"
                             type="button"
                             value="6"
-                            OnClick="calc.display.value+='6'"
                         />
                     </td>
 
@@ -185,7 +183,6 @@
                             id="btn"
                             type="button"
                             value="-"
-                            OnClick="calc.display.value='-'"
                         />
                     </td>
 
@@ -194,7 +191,6 @@
                             id="btn"
                             type="button"
                             value="%"
-                            OnClick="calc.display.value+='%'"
                         />
                     </td>
 
@@ -203,7 +199,6 @@
                             id="btn"
                             type="button"
                             value="cos"
-                            OnClick="calc.display.value='Math.cos('"
                         />
                     </td>
                 </tr>
@@ -214,7 +209,6 @@
                             id="btn"
                             type="button"
                             value="7"
-                            OnClick="calc.display.value+='7'"
                         />
                     </td>
 
@@ -223,7 +217,6 @@
                             id="btn"
                             type="button"
                             value="8"
-                            OnClick="calc.display.value+='8'"
                         />
                     </td>
 
@@ -232,7 +225,6 @@
                             id="btn"
                             type="button"
                             value="9"
-                            OnClick="calc.display.value+='9'"
                         />
                     </td>
 
@@ -241,7 +233,6 @@
                             id="btn"
                             type="button"
                             value="*"
-                            OnClick="calc.display.value+='*'"
                         />
                     </td>
 
@@ -250,7 +241,6 @@
                             id="btn"
                             type="button"
                             value="n!"
-                            OnClick="calc.display.value+='!'"
                         />
                     </td>
 
@@ -259,7 +249,6 @@
                             id="btn"
                             type="button"
                             value="sin"
-                            OnClick="calc.display.value='Math.sin('"
                         />
                     </td>
                 </tr>
@@ -270,7 +259,6 @@
                             id="btn"
                             type="button"
                             value="."
-                            OnClick="calc.display.value+='.'"
                         />
                     </td>
 
@@ -279,7 +267,6 @@
                             id="btn"
                             type="button"
                             value="0"
-                            OnClick="calc.display.value+='0'"
                         />
                     </td>
 
@@ -288,7 +275,6 @@
                             id="btn"
                             type="button"
                             value=","
-                            OnClick="calc.display.value+=','"
                         />
                     </td>
 
@@ -297,7 +283,6 @@
                             id="btn"
                             type="button"
                             value="+"
-                            OnClick="calc.display.value+='+'"
                         />
                     </td>
 
@@ -306,7 +291,7 @@
                             id="btn"
                             type="button"
                             value="/"
-                            OnClick="calc.display.value+='/'"
+                            OnClick="calcdisplayval('/')"
                         />
                     </td>
 
@@ -315,7 +300,6 @@
                             id="btn"
                             type="button"
                             value="tan"
-                            OnClick="calc.display.value='Math.tan('"
                         />
                     </td>
                 </tr>
@@ -327,7 +311,6 @@
                             class="purplebtn"
                             type="button"
                             value="E"
-                            OnClick="calc.display.value+='Math.E'"
                         />
                     </td>
 
@@ -337,7 +320,6 @@
                             class="purplebtn"
                             type="button"
                             value="pi"
-                            OnClick="calc.display.value+='Math.PI'"
                         />
                     </td>
 
@@ -347,7 +329,6 @@
                             class="purplebtn"
                             type="button"
                             value="^"
-                            OnClick="calc.display.value+='Math.pow('"
                         />
                     </td>
 
@@ -357,7 +338,6 @@
                             class="purplebtn"
                             type="button"
                             value="("
-                            OnClick="calc.display.value+='('"
                         />
                     </td>
 
@@ -367,7 +347,6 @@
                             class="purplebtn"
                             type="button"
                             value=")"
-                            OnClick="calc.display.value+=')'"
                         />
                     </td>
 
@@ -377,7 +356,6 @@
                             class="purplebtn"
                             type="button"
                             value="log"
-                            OnClick="calc.display.value='Math.log('"
                         />
                     </td>
                 </tr>
@@ -389,7 +367,6 @@
                             class="purplebtn"
                             type="button"
                             value="sqrt"
-                            OnClick="calc.display.value+='Math.sqrt('"
                         />
                     </td>
 
@@ -399,7 +376,6 @@
                             class="purplebtn"
                             type="button"
                             value="ln2"
-                            OnClick="calc.display.value+='Math.LN2'"
                         />
                     </td>
 
@@ -429,7 +405,7 @@
                             class="purplebtn"
                             type="button"
                             value="l10e"
-                            OnClick="calc.display.value+='Math.log10'"
+                            OnClick="calcdisplayval('log2(')"
                         />
                     </td>
 
@@ -439,7 +415,7 @@
                             class="purplebtn"
                             type="button"
                             value="exp"
-                            OnClick="calc.display.value='Math.exp('"
+                            OnClick="calcdisplayval('^')"
                         />
                     </td>
                 </tr>

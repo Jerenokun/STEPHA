@@ -12,20 +12,21 @@ const createWindow = () => {
     const mainWindow = new BrowserWindow({
         minWidth: 1000,
         minHeight: 700,
-        width: 1000,
+        width: 1100,
         height: 700,
+        fullscreen: true,
         icon: __dirname + "/assets/stepha_icon.icns",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            devTools: false,
         },
     });
     // loading the html
     mainWindow.loadFile("src/index.html");
     // Removing the menubar. The menubar is basically the "File|Edit|View... parts that you see in something like the task manager"
-    mainWindow.setMenu(null);
+    mainWindow.setMenuBarVisibility(false)
 };
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

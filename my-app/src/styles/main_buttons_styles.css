@@ -19,7 +19,7 @@
     width: 7.6vw;
 }
 #things_to_do_button {
-    top: 6.2vh;
+    top: calc(5% - 0.2vh + 12px);
     border-radius: 0 10px 0 0;
     border: 0.4vh solid #7e2689;
     transition: all 0.5s;
@@ -35,14 +35,14 @@
     border-radius: 5px;
 }
 #daily_reminders_button {
-    top: calc(6.2vh + 12.8% - 0.3vh + 20px + 0.8vh);
+    top: calc(5% - 0.2vh + 12px + 12.8% - 0.3vh + 20px + 0.8vh);
     border: 0.4vh solid #fc9404;
     transition: all 0.5s;
     background-color: #8d5c3e;
     color: #fc9404;
 }
 #games_button {
-    top: calc(6.2vh + 2 * (12.8% - 0.3vh + 20px + 0.8vh));
+    top: calc(5% - 0.2vh + 12px + 2 * (12.8% - 0.3vh + 20px + 0.8vh));
     border: 0.4vh solid #07b1a3;
     transition: all 0.5s;
     background-color: #068075;
@@ -53,7 +53,7 @@
         brightness(96%);
 }
 #tools_button {
-    top: calc(6.2vh + 3 * (12.8% - 0.3vh + 20px + 0.8vh));
+    top: calc(5% - 0.2vh + 12px + 3 * (12.8% - 0.3vh + 20px + 0.8vh));
     border: 0.4vh solid #39b807;
     transition: all 0.5s;
     background-color: #1a8006;

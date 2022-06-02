@@ -17,7 +17,7 @@
         <script src="index.js"></script>
     </head>
     <body>
-        <div id="notification-area" style="z-index: 12;"></div>
+        <div id="notification-area" style="z-index: 12"></div>
         <div id="startup" style="z-index:15">
             <img id="startup_img" src="assets/stepha_icon.png"> 
         </div>
@@ -215,21 +215,6 @@
                         />
                     </div>
 
-                    <!-- <div id="reminder_add">
-                        Add daily reminder
-                        <div id="reminder_inner">
-                            <div id="reminder_name_wrapper">
-                                Reminder<br />
-                                <input id="reminder_name" type="text" />
-                            </div>
-                            <div id="reminder_deadline_wrapper">
-                                Remind you at<br />
-                                <input id="reminder_time" type="time" />
-                            </div>
-                        </div>
-                    </div>
-                    <div id="add_reminder_wrapper">
-                        <input class="add_reminder" id="add_reminder" type="button" value="Add reminder">
                     </div> -->
                 </div>
             </div>
@@ -275,13 +260,375 @@
                 <div id="toolspage_content_area">
                     <div id="toolspage_title">Tools</div>
                     <div id="toolspage_content" style="text-align: center">
-                        <embed
-                            type="text/html"
-                            src="scical.html"
-                            width="500"
-                            height="500"
-                        />
-                        <textarea id="notes_part" style="border-radius: 10px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Add Notes Here</textarea>
+                        <div class="title">Scientific Calculator</div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <table
+                                        id="calc"
+                                        style="outline: 2px solid #c0c0c0"
+                                    >
+                                        <tr>
+                                            <td colspan="5">
+                                                <input
+                                                    class="btn"
+                                                    id="MathEntryBox"
+                                                    name="display"
+                                                    type="text"
+                                                    style="color: black"
+                                                />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="1"
+                                                    OnClick="calcdisplayval('1')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="2"
+                                                    OnClick="calcdisplayval('2')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="3"
+                                                    OnClick="calcdisplayval('3')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="C"
+                                                    OnClick="calcdisplayval('delete')"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="<-"
+                                                    OnClick="backspace(this.form)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="="
+                                                    OnClick="calculate(this.form)"
+                                                />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="4"
+                                                    OnClick="calcdisplayval('4')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="5"
+                                                    OnClick="calcdisplayval('5')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="6"
+                                                    OnClick="calcdisplayval('6')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="-"
+                                                    OnClick="calcdisplayval('-')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="%"
+                                                    OnClick="calcdisplayval('%')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="cos"
+                                                    OnClick="calcdisplayval('cos(')"
+                                                />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="7"
+                                                    OnClick="calcdisplayval('7')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="8"
+                                                    OnClick="calcdisplayval('8')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="9"
+                                                    OnClick="calcdisplayval('9')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="*"
+                                                    OnClick="calcdisplayval('*')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="n!"
+                                                    OnClick="calcdisplayval('!')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="sin"
+                                                    OnClick="calcdisplayval('sin(')"
+                                                />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="."
+                                                    OnClick="calcdisplayval('.')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="0"
+                                                    OnClick="calcdisplayval('0')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value=","
+                                                    OnClick="calcdisplayval(',')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="+"
+                                                    OnClick="calcdisplayval('+')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="/"
+                                                    OnClick="calcdisplayval('/')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="tan"
+                                                    OnClick="calcdisplayval('tan(')"
+                                                />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="E"
+                                                    OnClick="calcdisplayval('E')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="pi"
+                                                    OnClick="calcdisplayval('pi')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="^"
+                                                    OnClick="calcdisplayval('^')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="("
+                                                    OnClick="calcdisplayval('(')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value=")"
+                                                    OnClick="calcdisplayval(')')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="log"
+                                                    OnClick="calcdisplayval('log(')"
+                                                />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="sqrt"
+                                                    OnClick="calcdisplayval('sqrt(')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="ln2"
+                                                    OnClick="calcdisplayval('log2(')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="ln10"
+                                                    OnClick="calcdisplayval('log10(')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="l2e"
+                                                    OnClick="calcdisplayval('0.693147')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="l10e"
+                                                    OnClick="calcdisplayval('2.302585')"
+                                                />
+                                            </td>
+
+                                            <td>
+                                                <input
+                                                    class="btn"
+                                                    type="button"
+                                                    value="exp"
+                                                    OnClick="calcdisplayval('^')"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <textarea
+                                        id="notes_part"
+                                        style="
+                                            border-radius: 10px;
+                                            font-family: 'Segoe UI', Tahoma,
+                                                Geneva, Verdana, sans-serif;
+                                        "
+                                    >
+Add Notes Here</textarea
+                                    >
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

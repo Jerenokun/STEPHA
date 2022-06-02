@@ -7,6 +7,8 @@ const allpages = [
 ];
 const electron = require("electron");
 const fs = require("fs");
+const math = require("mathjs")
+let calcdisplay = document.getElementById("MathEntryBox")
 var deletetasknum = 0;
 var reminder202020 = 0;
 var breakfasttime = 7;
@@ -722,6 +724,11 @@ function AssignActionToButton() {
             document.getElementById("snakegame_play").style.display = "flex";
             document.getElementById("stackgame").focus();
         });
+    document.getElementById("MathEntryBox").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            calculate(this.form);
+        }
+    })
 }
 function UpdateData() {
     fs.readFile("resources/app/src/data.json", "utf8", (err, jsonString) => {
@@ -981,6 +988,28 @@ function DisableScrollbarWhenGaming() {
         document.body.style.overflowY = "scroll"
 
     }
+}
+function backspace(calc) {
+    let calcdisplay = document.getElementById("MathEntryBox")
+    size = calcdisplay.value.length;
+    calcdisplay.value = calc.display.value.substring(0, size - 1);
+}
+function calculate(calc) {
+    let calcdisplay = document.getElementById("MathEntryBox")
+    try {
+        calcdisplay.value = math.evaluate(calcdisplay.value);
+        
+    } catch {
+        calcdisplay.value = "Error";
+    }
+}
+function calcdisplayval(val) {
+    let calcdisplay = document.getElementById("MathEntryBox")
+    if (val == "delete") {
+        calcdisplay.value = ""
+    } else {
+       calcdisplay.value += val;  
+    }  
 }
 window.onload = function () {
     let CalmMusic = new Audio("audio/startup.mp3");
